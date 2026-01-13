@@ -1,0 +1,65 @@
+---
+// src/pages/index.astro
+
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HorizontalCard from "../components/HorizontalCard.astro";
+import { getCollection } from "astro:content";
+import createSlug from "../lib/createSlug"
+
+const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const last_posts = posts.slice(0, 3);
+---
+
+<BaseLayout sideBarActiveItemID="home">
+  <div class="pb-12 mt-5">
+    <div class="text-xl py-1">Hey there 👋</div>
+    <div class="text-5xl font-bold">I'm Dizzy</div>
+    <div class="text-3xl py-3 font-bold">A Mathematics Student at HFUT</div>
+    <div class="py-2">
+      <text class="text-lg">
+        Welcome to my personal website! My interests span Mathematics, AI, Coding, and Web3, and I'm also passionate about Go and basketball. Currently, I'm focused on developing the skills needed to become a Data Scientist.
+      </text>
+    </div>
+    <div class="mt-8">
+      <div class="text-lg">
+        <p>If you want to get in touch, feel free to <a href="mailto:zhiyuan.dizzy@outlook.com" class="text-blue-500 underline">email me</a>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="text-3xl w-full font-bold mb-2">My last projects </div>
+  </div>
+
+  <!-- Demo Project 1 -->
+  <HorizontalCard
+    title="GAANet: Global-guided Asymmetric Attention Network for Audio-Visual Speech Separation"
+    img="/proj1_img.webp"
+    desc="GAANet introduces a novel asymmetric multi-scale fusion framework combined with a global-guided attention mechanism, significantly improving audio-visual speech separation performance. The method achieves state-of-the-art results on the LRS2 and VoxCeleb2 datasets while maintaining efficient computational performance."
+    url="https://github.com/redizzy/GAANet"
+    badge="NEW"
+  />
+  <div class="divider my-0"></div>
+
+  <div>
+    <div class="text-3xl w-full font-bold mb-5 mt-10">Latest from blog</div>
+  </div>
+
+  {
+    last_posts.map((post) => (
+      <>
+        <HorizontalCard
+          title={post.data.title}
+          img={post.data.heroImage}
+          desc={post.data.description}
+          url={"/blog/" + createSlug(post.data.title, post.slug)}
+          target="_self"
+          badge={post.data.badge}
+        />
+        <div class="divider my-0" />
+      </>
+    ))
+  }
+</BaseLayout>
+
