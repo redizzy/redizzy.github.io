@@ -1,43 +1,49 @@
 ---
 import { type BlogSchema } from "../content/config";
-import BaseLayout from "./BaseLayout.astro";
-import dayjs from "dayjs";
-import localizedFormat from "dayjs/plugin/localizedFormat";
+import SiteLayout from "./SiteLayout.astro";
 
 export interface Props extends BlogSchema {}
 
 const { title, description, pubDate, updatedDate, heroImage, badge, tags = [] } = Astro.props;
-dayjs.extend(localizedFormat);
-const displayDate = dayjs(pubDate).format("ll")
-import { Image } from "astro:assets";
+const displayDate = new Intl.DateTimeFormat("en", {
+  year: "numeric",
+  month: "long",
+  day: "2-digit",
+}).format(pubDate);
 ---
 
-<BaseLayout title={title} description={description} image={heroImage}, ogType="article">
-  <main class="md:flex md:justify-center">
-    <article class="prose prose-lg max-w-[750px] prose-img:mx-auto">
-      {heroImage && <Image width={750} height={422} format="webp" src={heroImage} alt={title} class="w-full mb-6" />}
-      <h1 class="title my-2 text-4xl font-bold">{title}</h1>
-      {pubDate && <time>{displayDate}</time>}
-      <br />
-      {badge && <div class="badge badge-secondary my-1">{badge}</div>}
-      {
-        tags &&
-          tags.map((tag) => (
-            <a href={`/blog/tag/${tag}`} class="badge badge-outline ml-2 no-underline">
-              {tag}
-            </a>
-          ))
-      }
-      {
-        updatedDate && (
-          <div>
-            {" "}
-            Last updated on <time>{updatedDate}</time>{" "}
-          </div>
-        )
-      }
-      <div class="divider my-2"></div>
-      <slot />
+<SiteLayout title={`${title} | Dizzy`} description={description} image={heroImage} ogType="article">
+  <div class="mx-auto w-full max-w-7xl px-6 pb-24 pt-32 sm:px-8 sm:pb-28 sm:pt-36">
+    <article class="mx-auto max-w-3xl">
+      <a href="/blog/" class="font-mono text-[0.6rem] font-bold uppercase tracking-[0.16em] text-slate-400 transition hover:text-blue-600">&lt;- Back to writing</a>
+
+      <header class="border-b border-slate-200 pb-10 pt-9 sm:pb-12">
+        <div class="flex flex-wrap items-center gap-3">
+          <time datetime={pubDate.toISOString()} class="font-mono text-[0.6rem] font-bold uppercase tracking-[0.16em] text-blue-600">{displayDate}</time>
+          {badge && <span class="rounded-full border border-blue-200 bg-blue-50 px-2.5 py-1 font-mono text-[0.52rem] font-bold uppercase tracking-[0.12em] text-blue-600">{badge}</span>}
+        </div>
+        <h1 class="mt-5 text-4xl font-black leading-[1.02] tracking-[-0.045em] text-slate-950 sm:text-5xl lg:text-6xl">{title}</h1>
+        <p class="mt-6 text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">{description}</p>
+        <div class="mt-6 flex flex-wrap items-center gap-2">
+          {tags.map((tag) => <a href={`/blog/tag/${tag}`} class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 font-mono text-[0.56rem] font-bold uppercase tracking-[0.08em] text-slate-500 transition hover:border-blue-300 hover:text-blue-600">{tag}</a>)}
+        </div>
+        {updatedDate && <p class="mt-5 text-xs text-slate-400">Last updated on <time>{updatedDate}</time></p>}
+      </header>
+
+      {heroImage && (
+        <figure class="my-10 overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 sm:my-12">
+          <img src={heroImage} alt={title} width="1200" height="675" class="w-full" />
+        </figure>
+      )}
+
+      <div class="article-body prose prose-lg max-w-none prose-headings:font-extrabold prose-headings:tracking-tight prose-headings:text-slate-950 prose-p:leading-8 prose-p:text-slate-700 prose-a:text-blue-600 prose-a:decoration-blue-200 prose-strong:text-slate-950 prose-code:text-blue-700 prose-img:mx-auto">
+        <slot />
+      </div>
+
+      <footer class="mt-14 flex flex-col items-start justify-between gap-4 border-t border-slate-200 pt-7 sm:flex-row sm:items-center">
+        <span class="font-mono text-[0.58rem] font-bold uppercase tracking-[0.16em] text-slate-400">End of entry</span>
+        <a href="/blog/" class="group inline-flex items-center gap-2 text-sm font-extrabold text-slate-800 transition hover:text-blue-600">More writing <span class="transition-transform group-hover:translate-x-1">-&gt;</span></a>
+      </footer>
     </article>
-  </main>
-</BaseLayout>
+  </div>
+</SiteLayout>

@@ -1,0 +1,184 @@
+---
+import { getCollection } from "astro:content";
+import createSlug from "../../lib/createSlug";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+const latestPosts = posts.slice(0, 3);
+const [featuredPost, ...secondaryPosts] = latestPosts;
+
+const formatDate = (date: Date) =>
+  new Intl.DateTimeFormat("en", {
+    year: "numeric",
+    month: "short",
+    day: "2-digit",
+  }).format(date);
+
+const postUrl = (post: (typeof posts)[number]) =>
+  `/blog/${createSlug(post.data.title, post.slug)}`;
+---
+
+<section id="blog" class="blog-section relative overflow-hidden bg-white">
+  <div class="blog-rule pointer-events-none absolute inset-y-0 left-1/2 hidden w-px bg-slate-100 lg:block" aria-hidden="true"></div>
+
+  <div class="relative mx-auto max-w-7xl px-6 py-24 sm:px-8 sm:py-28 lg:py-32">
+    <div class="mb-12 grid items-end gap-6 lg:grid-cols-[1fr_0.62fr] lg:gap-16">
+      <div>
+        <div class="mb-4 flex items-center gap-3 font-mono text-[0.65rem] font-bold uppercase tracking-[0.24em] text-blue-600">
+          <span>04</span>
+          <span class="h-px w-10 bg-blue-600"></span>
+          Field notes
+        </div>
+        <h2 class="max-w-4xl text-4xl font-black leading-[0.98] tracking-[-0.045em] text-slate-950 sm:text-5xl lg:text-6xl">
+          Notes from the<br />learning loop.
+        </h2>
+      </div>
+      <div class="lg:pb-1">
+        <p class="max-w-xl text-base leading-7 text-slate-600 lg:text-lg lg:leading-8">
+          Ideas become clearer when they are written down. This is where experiments, technical
+          lessons, and unfinished questions take shape.
+        </p>
+        <div class="mt-5 flex items-center gap-3 font-mono text-[0.6rem] font-bold uppercase tracking-[0.16em] text-slate-400">
+          <span>{posts.length.toString().padStart(2, "0")} entries</span>
+          <span class="h-px w-8 bg-slate-300"></span>
+          <a href="/rss.xml" class="transition hover:text-blue-600">RSS feed</a>
+        </div>
+      </div>
+    </div>
+
+    {
+      featuredPost ? (
+        <div class="grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
+          <a href={postUrl(featuredPost)} class="featured-post group relative min-h-[30rem] overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-50 text-slate-950">
+            {featuredPost.data.heroImage && (
+              <img
+                src={featuredPost.data.heroImage}
+                alt=""
+                width="1200"
+                height="675"
+                loading="lazy"
+                decoding="async"
+                class="absolute inset-0 h-full w-full object-cover opacity-10 grayscale transition duration-700 group-hover:scale-[1.03] group-hover:opacity-15 motion-reduce:transition-none"
+              />
+            )}
+            <div class="featured-overlay absolute inset-0" aria-hidden="true" />
+            <div class="relative flex min-h-[30rem] flex-col p-7 sm:p-10">
+              <div class="flex flex-wrap items-center justify-between gap-3">
+                <span class="rounded-full border border-blue-200 bg-blue-50 px-3 py-1 font-mono text-[0.58rem] font-bold uppercase tracking-[0.16em] text-blue-700">Latest entry</span>
+                <time datetime={featuredPost.data.pubDate.toISOString()} class="font-mono text-[0.6rem] uppercase tracking-[0.15em] text-slate-400">
+                  {formatDate(featuredPost.data.pubDate)}
+                </time>
+              </div>
+
+              <div class="mt-auto max-w-2xl">
+                {featuredPost.data.badge && <span class="mb-4 block font-mono text-[0.6rem] font-bold uppercase tracking-[0.18em] text-blue-600">{featuredPost.data.badge}</span>}
+                <h3 class="text-3xl font-black leading-[1.05] tracking-[-0.04em] sm:text-4xl lg:text-5xl">{featuredPost.data.title}</h3>
+                <p class="mt-4 max-w-xl text-sm leading-7 text-slate-600 sm:text-base">{featuredPost.data.description}</p>
+                <div class="mt-7 flex items-end justify-between gap-5 border-t border-slate-200 pt-5">
+                  <div class="flex flex-wrap gap-2">
+                    {(featuredPost.data.tags ?? ["Journal"]).map((tag) => <span class="post-tag-dark">{tag}</span>)}
+                  </div>
+                  <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-blue-600 text-white transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" /></svg>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <div class="flex flex-col gap-4">
+            {secondaryPosts.map((post, index) => (
+              <a href={postUrl(post)} class="secondary-post group flex flex-1 flex-col justify-between rounded-[2rem] border border-slate-200 bg-slate-50 p-7 transition sm:p-8">
+                <div class="flex items-center justify-between gap-4">
+                  <span class="font-mono text-[0.6rem] font-black uppercase tracking-[0.18em] text-blue-600">Entry / 0{index + 2}</span>
+                  <time datetime={post.data.pubDate.toISOString()} class="font-mono text-[0.58rem] uppercase tracking-[0.12em] text-slate-400">
+                    {formatDate(post.data.pubDate)}
+                  </time>
+                </div>
+                <div class="pt-12 lg:pt-8">
+                  <h3 class="text-2xl font-extrabold leading-tight tracking-[-0.025em] text-slate-950 transition-colors group-hover:text-blue-700">{post.data.title}</h3>
+                  <p class="mt-3 line-clamp-2 text-sm leading-6 text-slate-500">{post.data.description}</p>
+                  <div class="mt-6 flex items-center justify-between border-t border-slate-200 pt-4">
+                    <div class="flex flex-wrap gap-2">
+                      {(post.data.tags ?? ["Journal"]).slice(0, 2).map((tag) => <span class="post-tag-light">{tag}</span>)}
+                    </div>
+                    <span class="font-mono text-sm text-slate-400 transition-transform group-hover:translate-x-1">-&gt;</span>
+                  </div>
+                </div>
+              </a>
+            ))}
+
+            {secondaryPosts.length === 0 && (
+              <div class="flex flex-1 items-center rounded-[2rem] border border-dashed border-slate-300 bg-slate-50 p-8 text-sm leading-6 text-slate-500">
+                More notes will appear here as they are published.
+              </div>
+            )}
+          </div>
+        </div>
+      ) : (
+        <div class="rounded-[2rem] border border-dashed border-slate-300 bg-slate-50 px-7 py-20 text-center sm:px-10">
+          <span class="font-mono text-[0.6rem] font-bold uppercase tracking-[0.2em] text-blue-600">Notebook initializing</span>
+          <h3 class="mt-4 text-2xl font-extrabold text-slate-950">The first note is in progress.</h3>
+          <p class="mx-auto mt-3 max-w-lg text-sm leading-6 text-slate-500">Technical experiments and learning notes will be published here when they are ready.</p>
+        </div>
+      )
+    }
+
+    <div class="mt-8 flex justify-end">
+      <a href="/blog/" class="group inline-flex items-center gap-3 text-sm font-extrabold text-slate-800 transition hover:text-blue-600">
+        Open the complete notebook
+        <span class="grid h-9 w-9 place-items-center rounded-full border border-slate-300 transition group-hover:border-blue-300 group-hover:bg-blue-50">-&gt;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .featured-overlay {
+    background:
+      linear-gradient(to top, rgb(248 250 252 / 0.98) 8%, rgb(248 250 252 / 0.78) 58%, rgb(248 250 252 / 0.45)),
+      radial-gradient(circle at 80% 10%, rgb(37 99 235 / 0.16), transparent 45%);
+  }
+
+  .post-tag-dark,
+  .post-tag-light {
+    border-radius: 9999px;
+    padding: 0.35rem 0.58rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.58rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .post-tag-dark {
+    border: 1px solid #cbd5e1;
+    background: rgb(255 255 255 / 0.7);
+    color: #64748b;
+  }
+
+  .post-tag-light {
+    border: 1px solid #cbd5e1;
+    background: white;
+    color: #64748b;
+  }
+
+  .secondary-post:hover {
+    border-color: #93c5fd;
+    background: white;
+    box-shadow: 0 24px 55px -42px rgb(15 23 42 / 0.45);
+    transform: translateY(-3px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .secondary-post,
+    .featured-post span,
+    .secondary-post span {
+      transition: none;
+    }
+
+    .secondary-post:hover {
+      transform: none;
+    }
+  }
+</style>

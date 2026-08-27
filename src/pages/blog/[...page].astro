@@ -1,8 +1,7 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import HorizontalCard from "../../components/HorizontalCard.astro";
 import { getCollection } from "astro:content";
-import createSlug from "../../lib/createSlug"
+import BlogPostList from "../../components/BlogPostList.astro";
+import SiteLayout from "../../layouts/SiteLayout.astro";
 
 export async function getStaticPaths({ paginate }) {
   const posts = await getCollection("blog");
@@ -11,77 +10,42 @@ export async function getStaticPaths({ paginate }) {
 }
 
 const { page } = Astro.props;
+const allPosts = await getCollection("blog");
+const tags = [...new Set(allPosts.flatMap((post) => post.data.tags ?? []))].sort();
 ---
 
-<BaseLayout title="Blog" sideBarActiveItemID="blog">
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Blog</div>
-  </div>
-
-  {
-    page.data.length === 0 ? (
-      <div class="bg-base-200 border-l-4 border-secondary w-full p-4 min-w-full">
-        <p class="font-bold">Sorry!</p>
-        <p>There are no blog posts to show at the moment. Check back later!</p>
+<SiteLayout title="Writing | Dizzy" description="Technical notes, experiments, and learning records from Dizzy.">
+  <div class="mx-auto w-full max-w-7xl px-6 pb-24 pt-32 sm:px-8 sm:pb-28 sm:pt-36">
+    <header class="grid gap-8 border-b border-slate-200 pb-12 sm:pb-16 lg:grid-cols-[1fr_0.6fr] lg:items-end">
+      <div>
+        <div class="mb-5 flex items-center gap-3 font-mono text-[0.65rem] font-bold uppercase tracking-[0.24em] text-blue-600">
+          <span>Index / Writing</span>
+          <span class="h-px w-10 bg-blue-600"></span>
+          <span>{allPosts.length.toString().padStart(2, "0")} entries</span>
+        </div>
+        <h1 class="text-5xl font-black leading-[0.95] tracking-[-0.055em] text-slate-950 sm:text-6xl lg:text-7xl">The notebook.</h1>
       </div>
-    ) : (
-      <ul>
-        {page.data.map((post) => (
-          <>
-            <HorizontalCard
-              title={post.data.title}
-              img={post.data.heroImage}
-              desc={post.data.description}
-              url={"/blog/" + createSlug(post.data.title, post.slug)}
-              target="_self"
-              badge={post.data.badge}
-              tags={post.data.tags}
-            />
-            <div class="divider my-0" />
-          </>
-        ))}
-      </ul>
-    )
-  }
+      <div>
+        <p class="text-base leading-7 text-slate-600">Technical lessons, experiments, and questions collected while learning and building.</p>
+        <a href="/rss.xml" class="mt-5 inline-flex items-center gap-2 font-mono text-[0.6rem] font-bold uppercase tracking-[0.16em] text-slate-400 transition hover:text-blue-600">Follow via RSS <span>-&gt;</span></a>
+      </div>
+    </header>
 
-  <div class="flex justify-between">
-    {
-      page.url.prev ? (
-        <a href={page.url.prev} class="btn btn-ghost my-10 mx-5">
-          {" "}
-          <svg
-            class="h-6 w-6 fill-current md:h-8 md:w-8"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-          >
-            <path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" />
-          </svg>{" "}
-          Recent posts
-        </a>
-      ) : (
-        <div />
-      )
-    }
-    {
-      page.url.next ? (
-        <a href={page.url.next} class="btn btn-ghost my-10 mx-5">
-          Older Posts{" "}
-          <svg
-            class="h-6 w-6 fill-current md:h-8 md:w-8"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-          >
-            {" "}
-            <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
-          </svg>
-        </a>
-      ) : (
-        <div />
-      )
-    }
+    {tags.length > 0 && (
+      <nav class="flex flex-wrap items-center gap-2 border-b border-slate-200 py-6" aria-label="Article tags">
+        <span class="mr-2 font-mono text-[0.58rem] font-bold uppercase tracking-[0.16em] text-slate-400">Filter</span>
+        {tags.map((tag) => <a href={`/blog/tag/${tag}`} class="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-600 transition hover:border-blue-300 hover:text-blue-600">{tag}</a>)}
+      </nav>
+    )}
+
+    <div class="pt-8">
+      <BlogPostList posts={page.data} />
+    </div>
+
+    <nav class="mt-8 flex items-center justify-between" aria-label="Blog pagination">
+      {page.url.prev ? <a href={page.url.prev} class="text-sm font-extrabold text-slate-700 transition hover:text-blue-600">&lt;- Newer entries</a> : <span />}
+      <span class="font-mono text-[0.6rem] font-bold uppercase tracking-[0.15em] text-slate-400">Page {page.currentPage} / {page.lastPage}</span>
+      {page.url.next ? <a href={page.url.next} class="text-sm font-extrabold text-slate-700 transition hover:text-blue-600">Older entries -&gt;</a> : <span />}
+    </nav>
   </div>
-</BaseLayout>
+</SiteLayout>

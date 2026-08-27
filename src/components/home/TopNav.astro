@@ -1,0 +1,267 @@
+---
+const links = [
+  { id: "skills", label: "Skills", index: "01" },
+  { id: "projects", label: "Projects", index: "02" },
+  { id: "journey", label: "Journey", index: "03" },
+  { id: "life", label: "Life", index: "04" },
+  { id: "blog", label: "Writing", index: "05" },
+];
+
+const pathname = Astro.url.pathname;
+const pageSection = pathname.startsWith("/projects")
+  ? "projects"
+  : pathname.startsWith("/blog")
+    ? "blog"
+    : "";
+---
+
+<header class="nav-wrap fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5" data-home-nav data-page-section={pageSection}>
+  <nav class="site-nav relative mx-auto flex h-14 max-w-7xl items-center justify-between rounded-2xl border border-white/70 bg-white/80 px-3 shadow-[0_12px_45px_-24px_rgba(15,23,42,0.35)] backdrop-blur-xl sm:px-4" aria-label="Main navigation">
+    <a href="/#home" class="brand group flex h-10 items-center gap-3 rounded-xl px-2" data-section="home" aria-label="Dizzy, back to home">
+      <span class="grid h-8 w-8 place-items-center rounded-lg bg-slate-950 font-mono text-xs font-black tracking-tight text-white transition-colors group-hover:bg-blue-600">DZ</span>
+      <span class="hidden leading-none sm:block">
+        <span class="block text-sm font-extrabold tracking-[-0.02em] text-slate-950">Dizzy</span>
+        <span class="mt-1 block font-mono text-[0.55rem] uppercase tracking-[0.18em] text-slate-400">Personal index</span>
+      </span>
+    </a>
+
+    <div class="hidden items-center lg:flex">
+      {
+        links.map(({ id, label, index }) => (
+          <a href={`/#${id}`} class="nav-link relative flex h-10 items-center gap-1.5 rounded-lg px-3 text-sm font-semibold text-slate-500 transition-colors hover:text-slate-950" data-section={id}>
+            <span class="font-mono text-[0.55rem] text-slate-300">{index}</span>
+            {label}
+          </a>
+        ))
+      }
+    </div>
+
+    <div class="flex items-center gap-1.5">
+      <a
+        href="https://github.com/redizzy"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="nav-icon grid h-9 w-9 place-items-center rounded-lg text-slate-500 transition hover:bg-slate-100 hover:text-slate-950"
+        aria-label="Visit Dizzy's GitHub profile"
+      >
+        <svg viewBox="0 0 24 24" fill="currentColor" class="h-[1.15rem] w-[1.15rem]" aria-hidden="true">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.523 2 12 2z"></path>
+        </svg>
+      </a>
+      <a href="/#contact" class="contact-link hidden h-9 items-center gap-2 rounded-lg bg-slate-950 px-4 text-xs font-bold text-white transition hover:bg-blue-600 sm:flex" data-section="contact">
+        Let's talk
+        <span class="h-1.5 w-1.5 rounded-full bg-blue-400"></span>
+      </a>
+
+      <details class="mobile-menu relative lg:hidden" data-mobile-menu>
+        <summary class="grid h-9 w-9 cursor-pointer list-none place-items-center rounded-lg text-slate-600 transition hover:bg-slate-100 hover:text-slate-950" aria-label="Open navigation menu">
+          <span class="menu-lines relative h-3.5 w-5" aria-hidden="true"></span>
+        </summary>
+        <div class="menu-panel absolute right-0 top-12 w-[min(19rem,calc(100vw-1.5rem))] overflow-hidden rounded-2xl border border-slate-200 bg-white p-2 shadow-2xl shadow-slate-950/15">
+          <div class="px-3 pb-2 pt-2 font-mono text-[0.6rem] uppercase tracking-[0.2em] text-slate-400">Navigate the index</div>
+          {
+            links.map(({ id, label, index }) => (
+              <a href={`/#${id}`} class="mobile-link flex items-center justify-between rounded-xl px-3 py-3 text-sm font-bold text-slate-700 transition hover:bg-slate-100 hover:text-blue-700" data-section={id}>
+                <span>{label}</span>
+                <span class="font-mono text-[0.6rem] text-slate-300">{index}</span>
+              </a>
+            ))
+          }
+          <div class="my-2 h-px bg-slate-100"></div>
+          <div class="grid grid-cols-2 gap-2">
+            <a href="/cv" class="rounded-xl bg-slate-100 px-3 py-3 text-center text-xs font-bold text-slate-700 transition hover:bg-slate-200">View CV</a>
+            <a href="/#contact" class="rounded-xl bg-slate-950 px-3 py-3 text-center text-xs font-bold text-white transition hover:bg-blue-600" data-section="contact">Contact</a>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <span class="scroll-progress absolute inset-x-3 bottom-0 h-px origin-left bg-blue-600" aria-hidden="true"></span>
+  </nav>
+</header>
+
+<script>
+  const initHomeNavigation = () => {
+    const wrapper = document.querySelector<HTMLElement>("[data-home-nav]");
+    if (!wrapper || wrapper.dataset.bound) return;
+    wrapper.dataset.bound = "true";
+
+    const navLinks = Array.from(wrapper.querySelectorAll<HTMLAnchorElement>("[data-section]"));
+    const sections: HTMLElement[] = [];
+    for (const link of navLinks) {
+      const section = document.getElementById(link.dataset.section ?? "");
+      if (section && !sections.includes(section)) sections.push(section);
+    }
+    sections.sort((a, b) => a.offsetTop - b.offsetTop);
+    const mobileMenu = wrapper.querySelector<HTMLDetailsElement>("[data-mobile-menu]");
+    const controller = new AbortController();
+    let frame = 0;
+
+    const updateNavigation = () => {
+      frame = 0;
+      const marker = window.innerHeight * 0.35;
+      let activeSection = sections.length > 0 ? "home" : (wrapper.dataset.pageSection ?? "");
+
+      for (const section of sections) {
+        if (section.getBoundingClientRect().top <= marker) activeSection = section.id;
+      }
+
+      if (sections.length > 0 && window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 8) {
+        activeSection = sections.at(-1)?.id ?? activeSection;
+      }
+
+      for (const link of navLinks) {
+        const active = link.dataset.section === activeSection;
+        link.toggleAttribute("data-active", active);
+        if (active) link.setAttribute("aria-current", "location");
+        else link.removeAttribute("aria-current");
+      }
+
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollable > 0 ? Math.min(window.scrollY / scrollable, 1) : 0;
+      wrapper.style.setProperty("--scroll-progress", String(progress));
+      wrapper.toggleAttribute("data-scrolled", window.scrollY > 20);
+    };
+
+    const requestUpdate = () => {
+      if (!frame) frame = window.requestAnimationFrame(updateNavigation);
+    };
+
+    for (const link of navLinks) {
+      link.addEventListener("click", () => mobileMenu?.removeAttribute("open"), {
+        signal: controller.signal,
+      });
+    }
+
+    window.addEventListener("scroll", requestUpdate, { passive: true, signal: controller.signal });
+    window.addEventListener("resize", requestUpdate, { passive: true, signal: controller.signal });
+    document.addEventListener("pointerdown", (event) => {
+      if (mobileMenu?.open && event.target instanceof Node && !mobileMenu.contains(event.target)) {
+        mobileMenu.removeAttribute("open");
+      }
+    }, { signal: controller.signal });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") mobileMenu?.removeAttribute("open");
+    }, { signal: controller.signal });
+    document.addEventListener("astro:before-swap", () => controller.abort(), {
+      once: true,
+      signal: controller.signal,
+    });
+    updateNavigation();
+  };
+
+  initHomeNavigation();
+  document.addEventListener("astro:page-load", initHomeNavigation);
+</script>
+
+<style>
+  .nav-wrap {
+    --scroll-progress: 0;
+    pointer-events: none;
+  }
+
+  .site-nav {
+    pointer-events: auto;
+    transition: border-color 250ms ease, background-color 250ms ease, box-shadow 250ms ease;
+  }
+
+  .nav-wrap[data-scrolled] .site-nav {
+    border-color: rgb(203 213 225 / 0.8);
+    background: rgb(255 255 255 / 0.92);
+    box-shadow: 0 18px 55px -25px rgb(15 23 42 / 0.42);
+  }
+
+  .nav-link::after {
+    position: absolute;
+    bottom: 0.25rem;
+    left: 50%;
+    width: 0.25rem;
+    height: 0.25rem;
+    border-radius: 9999px;
+    background: #2563eb;
+    content: "";
+    opacity: 0;
+    transform: translate(-50%, 4px);
+    transition: opacity 180ms ease, transform 180ms ease;
+  }
+
+  .nav-link[data-active] {
+    color: #0f172a;
+  }
+
+  .nav-link[data-active]::after {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
+  .contact-link[data-active] {
+    background: #2563eb;
+  }
+
+  .scroll-progress {
+    transform: scaleX(var(--scroll-progress));
+    transition: transform 80ms linear;
+  }
+
+  .mobile-menu summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .menu-lines::before,
+  .menu-lines::after {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 1.5px;
+    border-radius: 9999px;
+    background: currentColor;
+    content: "";
+    transition: top 180ms ease, transform 180ms ease;
+  }
+
+  .menu-lines::before {
+    top: 0.2rem;
+  }
+
+  .menu-lines::after {
+    top: 0.7rem;
+  }
+
+  .mobile-menu[open] .menu-lines::before {
+    top: 0.45rem;
+    transform: rotate(45deg);
+  }
+
+  .mobile-menu[open] .menu-lines::after {
+    top: 0.45rem;
+    transform: rotate(-45deg);
+  }
+
+  .menu-panel {
+    animation: menu-in 160ms ease-out;
+  }
+
+  .mobile-link[data-active] {
+    background: #eff6ff;
+    color: #1d4ed8;
+  }
+
+  @keyframes menu-in {
+    from {
+      opacity: 0;
+      transform: translateY(-6px) scale(0.98);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .site-nav,
+    .nav-link::after,
+    .menu-lines::before,
+    .menu-lines::after,
+    .scroll-progress,
+    .menu-panel {
+      animation: none;
+      transition: none;
+    }
+  }
+</style>

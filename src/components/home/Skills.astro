@@ -1,0 +1,273 @@
+---
+const mathTopics = ["Analysis", "Linear algebra", "Probability"];
+const aiTopics = ["Python", "PyTorch", "Deep learning"];
+const codingTopics = ["Python", "Web", "Tooling"];
+const web3Topics = ["Blockchain", "Ethereum"];
+---
+
+<section id="skills" class="skills-section relative overflow-hidden bg-slate-50">
+  <div class="skills-grid pointer-events-none absolute inset-0" aria-hidden="true"></div>
+
+  <div class="relative mx-auto max-w-7xl px-6 py-24 sm:px-8 sm:py-28 lg:py-32">
+    <div class="mb-12 grid items-end gap-6 lg:grid-cols-[1fr_0.7fr] lg:gap-16">
+      <div>
+        <div class="mb-4 flex items-center gap-3 font-mono text-[0.65rem] font-bold uppercase tracking-[0.24em] text-blue-600">
+          <span>01</span>
+          <span class="h-px w-10 bg-blue-600"></span>
+          Knowledge system
+        </div>
+        <h2 class="max-w-3xl text-4xl font-black leading-[0.98] tracking-[-0.045em] text-slate-950 sm:text-5xl lg:text-6xl">
+          Foundation first.<br />Then intelligence.
+        </h2>
+      </div>
+      <p class="max-w-xl text-base leading-7 text-slate-600 lg:pb-1 lg:text-lg lg:leading-8">
+        My toolkit starts with mathematical reasoning, extends into machine learning, and becomes
+        useful through code. These are connected parts of one learning system.
+      </p>
+    </div>
+
+    <div class="bento-grid grid gap-4 lg:grid-cols-12 lg:grid-rows-[20rem_17rem]">
+      <article class="skill-card math-card group relative overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-100 p-7 text-slate-950 sm:p-9 lg:col-span-7">
+        <div class="math-field pointer-events-none absolute inset-0 opacity-70" aria-hidden="true">
+          <span class="absolute right-[8%] top-[9%] font-serif text-5xl italic text-slate-400/20 sm:text-7xl">∫</span>
+          <span class="absolute right-[24%] top-[42%] font-serif text-3xl italic text-blue-500/20 sm:text-5xl">Σ</span>
+          <span class="absolute bottom-[8%] right-[7%] font-mono text-xs tracking-widest text-slate-500/25">P(A | B)</span>
+          <svg class="absolute inset-x-0 bottom-0 h-2/3 w-full" viewBox="0 0 700 220" preserveAspectRatio="none">
+            <path d="M0 190C90 183 109 138 188 148C284 160 307 62 399 83C503 107 526 32 700 16" stroke="#3b82f6" stroke-opacity="0.42" stroke-width="2" fill="none"></path>
+            <path d="M0 205C102 178 159 209 239 160C330 105 414 148 491 80C559 20 621 56 700 31" stroke="#64748b" stroke-opacity="0.15" stroke-width="1" stroke-dasharray="5 8" fill="none"></path>
+          </svg>
+        </div>
+
+        <div class="relative flex h-full flex-col">
+          <div class="flex items-start justify-between gap-4">
+            <div class="grid h-11 w-11 place-items-center rounded-xl border border-slate-200 bg-white font-serif text-xl italic text-blue-600">f(x)</div>
+            <span class="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-slate-500">Core foundation</span>
+          </div>
+          <div class="mt-auto max-w-md pt-16 lg:pt-0">
+            <h3 class="text-2xl font-extrabold tracking-tight sm:text-3xl">Mathematics & Statistics</h3>
+            <p class="mt-3 text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
+              Training in rigorous thinking, abstraction, and probability gives me the language to
+              understand models rather than only operate them.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              {mathTopics.map((topic) => <span class="topic-dark">{topic}</span>)}
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="skill-card ai-card group relative overflow-hidden rounded-[2rem] border border-slate-200 bg-[#f3f6fa] p-7 sm:p-9 lg:col-span-5">
+        <svg class="network pointer-events-none absolute right-[-8%] top-[-3%] h-56 w-72 opacity-70" viewBox="0 0 300 220" fill="none" aria-hidden="true">
+          <g stroke="#2563eb" stroke-opacity="0.22">
+            <path d="M30 52L112 31L171 90L266 43"></path>
+            <path d="M30 52L77 142L171 90L237 165"></path>
+            <path d="M112 31L142 177L237 165L266 43"></path>
+          </g>
+          <g fill="#eff6ff" stroke="#2563eb" stroke-width="2">
+            <circle cx="30" cy="52" r="7"></circle><circle cx="112" cy="31" r="6"></circle>
+            <circle cx="77" cy="142" r="8"></circle><circle cx="171" cy="90" r="9"></circle>
+            <circle cx="142" cy="177" r="6"></circle><circle cx="237" cy="165" r="7"></circle>
+            <circle cx="266" cy="43" r="8"></circle>
+          </g>
+        </svg>
+
+        <div class="relative flex h-full flex-col">
+          <div class="flex items-start justify-between gap-4">
+            <div class="grid h-11 w-11 place-items-center rounded-xl border border-blue-200 bg-blue-100 font-mono text-xs font-black text-blue-700">AI</div>
+            <span class="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-blue-500">Active focus</span>
+          </div>
+          <div class="mt-auto max-w-sm pt-20 lg:pt-0">
+            <h3 class="text-2xl font-extrabold tracking-tight text-slate-950 sm:text-3xl">AI & Data Science</h3>
+            <p class="mt-3 text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
+              Learning to turn theory and data into models, with a growing focus on deep learning
+              and multimodal intelligence.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              {aiTopics.map((topic) => <span class="topic-light">{topic}</span>)}
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="skill-card code-card group relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-7 sm:p-8 lg:col-span-5">
+        <div class="grid h-full gap-6 sm:grid-cols-[1fr_13rem] sm:items-end lg:grid-cols-[1fr_11rem]">
+          <div class="flex-1">
+            <div class="mb-6 flex items-center gap-2 font-mono text-[0.65rem] font-bold uppercase tracking-[0.18em] text-slate-400">
+              <span class="h-2 w-2 rounded-full bg-blue-600"></span>
+              Build layer
+            </div>
+            <h3 class="text-2xl font-extrabold tracking-tight text-slate-950">Coding</h3>
+            <p class="mt-2 max-w-sm text-sm leading-6 text-slate-600">
+              Building experiments, research code, and web tools that make ideas tangible.
+            </p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              {codingTopics.map((topic) => <span class="topic-light">{topic}</span>)}
+            </div>
+          </div>
+
+          <div class="terminal rounded-2xl border border-slate-200 bg-slate-50 p-4 font-mono text-[0.65rem] leading-6 text-slate-500">
+            <div><span class="text-blue-600">class</span> <span class="text-slate-900">Curiosity</span>:</div>
+            <div class="pl-4"><span class="text-blue-500">def</span> build(idea):</div>
+            <div class="pl-8"><span class="text-slate-400">return</span> learn(idea)</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="skill-card web3-card group relative overflow-hidden rounded-[2rem] border border-blue-100 bg-blue-50 p-7 text-slate-950 sm:p-8 lg:col-span-3">
+        <div class="chain-mark pointer-events-none absolute -right-4 -top-4 font-mono text-[7rem] font-black leading-none text-blue-600/[0.07]" aria-hidden="true">#</div>
+        <div class="relative flex h-full flex-col">
+          <span class="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-blue-500">Exploration</span>
+          <div class="mt-auto pt-16 lg:pt-0">
+            <h3 class="text-2xl font-extrabold tracking-tight">Web3</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600">
+              Exploring decentralized systems and the ideas behind programmable ownership.
+            </p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              {web3Topics.map((topic) => <span class="topic-blue">{topic}</span>)}
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="skill-card path-card relative overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-100 p-7 sm:p-8 lg:col-span-4">
+        <div class="flex items-center justify-between">
+          <span class="font-mono text-[0.6rem] font-bold uppercase tracking-[0.22em] text-slate-400">Current vector</span>
+          <span class="status-dot relative h-2 w-2 rounded-full bg-blue-600" aria-hidden="true"></span>
+        </div>
+        <div class="mt-8 space-y-1">
+          <div class="path-step text-slate-400"><span>01</span><strong>Mathematical foundation</strong></div>
+          <div class="path-line"></div>
+          <div class="path-step text-slate-500"><span>02</span><strong>Model building</strong></div>
+          <div class="path-line"></div>
+          <div class="path-step text-blue-700"><span>03</span><strong>Data scientist</strong></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .skills-grid {
+    background-image:
+      linear-gradient(rgb(15 23 42 / 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(15 23 42 / 0.025) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: linear-gradient(to bottom, transparent, black 18%, black 82%, transparent);
+  }
+
+  .skill-card {
+    min-height: 17rem;
+    transition: transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
+  }
+
+  .skill-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 28px 70px -38px rgb(15 23 42 / 0.42);
+  }
+
+  .math-card:hover,
+  .ai-card:hover,
+  .code-card:hover,
+  .web3-card:hover,
+  .path-card:hover {
+    border-color: rgb(148 163 184 / 0.75);
+  }
+
+  .math-field,
+  .network,
+  .terminal {
+    transition: transform 500ms ease;
+  }
+
+  .math-card:hover .math-field {
+    transform: scale(1.025);
+  }
+
+  .ai-card:hover .network {
+    transform: translate(-6px, 6px);
+  }
+
+  .code-card:hover .terminal {
+    transform: translateY(-3px);
+  }
+
+  .topic-dark,
+  .topic-light,
+  .topic-blue {
+    border-radius: 9999px;
+    padding: 0.4rem 0.65rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  .topic-dark {
+    border: 1px solid #cbd5e1;
+    background: rgb(255 255 255 / 0.7);
+    color: #475569;
+  }
+
+  .topic-light {
+    border: 1px solid #cbd5e1;
+    background: rgb(255 255 255 / 0.65);
+    color: #475569;
+  }
+
+  .topic-blue {
+    border: 1px solid #bfdbfe;
+    background: rgb(255 255 255 / 0.65);
+    color: #475569;
+  }
+
+  .path-step {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .path-step span {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.6rem;
+  }
+
+  .path-step strong {
+    font-size: 0.85rem;
+  }
+
+  .path-line {
+    width: 1px;
+    height: 1.2rem;
+    margin-left: 0.45rem;
+    background: #cbd5e1;
+  }
+
+  .status-dot::after {
+    position: absolute;
+    inset: -0.35rem;
+    border: 1px solid #2563eb;
+    border-radius: 9999px;
+    content: "";
+    animation: status-pulse 2s ease-out infinite;
+  }
+
+  @keyframes status-pulse {
+    from { opacity: 0.7; transform: scale(0.6); }
+    to { opacity: 0; transform: scale(1.4); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .skill-card,
+    .math-field,
+    .network,
+    .terminal,
+    .status-dot::after {
+      animation: none;
+      transition: none;
+    }
+
+    .skill-card:hover {
+      transform: none;
+    }
+  }
+</style>

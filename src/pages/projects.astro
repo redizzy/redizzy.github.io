@@ -1,51 +1,182 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import HorizontalCard from "../components/HorizontalCard.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+
+const categories = [
+  {
+    id: "academic",
+    title: "Academic Projects",
+    description: "Research work, experiments, and implementations developed around academic questions.",
+    projects: [
+      {
+        title: "GAANet: Global-guided Asymmetric Attention Network",
+        subtitle: "Audio-Visual Speech Separation",
+        description:
+          "An asymmetric multi-scale fusion framework with global-guided attention for refining audio and visual features across scales.",
+        image: "/proj1_img.webp",
+        tags: ["Python", "PyTorch", "Multimodal Learning", "Deep Learning"],
+        github: "https://github.com/redizzy/GAANet",
+      },
+    ],
+    reserved: ["Demo Academic Project 02", "Demo Academic Project 03"],
+  },
+  {
+    id: "software",
+    title: "Software Projects",
+    description: "Applications, developer tools, and systems built to solve practical problems.",
+    projects: [],
+    reserved: ["Demo Software Project 01", "Demo Software Project 02", "Demo Software Project 03"],
+  },
+  {
+    id: "agents",
+    title: "Agent Projects",
+    description: "Experiments with AI agents, tool use, workflows, and autonomous systems.",
+    projects: [],
+    reserved: ["Demo Agent Project 01", "Demo Agent Project 02", "Demo Agent Project 03"],
+  },
+];
 ---
 
-<BaseLayout title = "Projects" sideBarActiveItemID="projects">
-  <div>
-    <div class="text-3xl w-full font-bold mb-5">Academic project</div>
+<SiteLayout
+  title="Projects | Dizzy"
+  description="An archive of Dizzy's academic, software, and AI agent projects."
+  bodyClass="content-page"
+>
+  <div class="mx-auto w-full max-w-7xl px-6 pb-24 pt-32 sm:px-8 sm:pb-28 sm:pt-36">
+    <header class="max-w-4xl border-b border-slate-200 pb-12 sm:pb-16">
+      <div class="mb-5 flex items-center gap-3 font-mono text-[0.65rem] font-bold uppercase tracking-[0.24em] text-blue-600">
+        <span>Index / Projects</span>
+        <span class="h-px w-10 bg-blue-600"></span>
+        <span>{categories.length.toString().padStart(2, "0")} categories</span>
+      </div>
+      <h1 class="text-5xl font-black leading-[0.95] tracking-[-0.055em] text-slate-950 sm:text-6xl lg:text-7xl">
+        Project archive.
+      </h1>
+      <p class="mt-6 max-w-2xl text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
+        Work organized by type, from academic research to software and agent systems. New projects
+        will be added to their category as they become ready to share.
+      </p>
+    </header>
+
+    <div class="divide-y divide-slate-200">
+      {
+        categories.map(({ id, title, description, projects, reserved }, categoryIndex) => (
+          <section id={id} class="grid gap-8 py-14 sm:py-16 lg:grid-cols-[17rem_1fr] lg:gap-14">
+            <header>
+              <div class="flex items-center gap-3">
+                <span class="font-mono text-[0.62rem] font-black text-blue-600">0{categoryIndex + 1}</span>
+                <span class="font-mono text-[0.58rem] font-bold uppercase tracking-[0.16em] text-slate-400">
+                  {projects.length.toString().padStart(2, "0")} published / {reserved.length.toString().padStart(2, "0")} reserved
+                </span>
+              </div>
+              <h2 class="mt-3 text-2xl font-extrabold tracking-[-0.03em] text-slate-950">{title}</h2>
+              <p class="mt-3 text-sm leading-6 text-slate-500">{description}</p>
+            </header>
+
+            <div class="divide-y divide-slate-200 border-y border-slate-200">
+              {projects.length > 0 && (
+                <>
+                  {projects.map((project, projectIndex) => (
+                    <article class="grid gap-6 py-8 sm:py-10 xl:grid-cols-[14rem_1fr_auto] xl:items-center">
+                      <div class="flex min-h-36 items-center overflow-hidden rounded-xl border border-slate-200 bg-slate-50 p-3">
+                        <img
+                          src={project.image}
+                          alt={`${project.title} architecture`}
+                          width="750"
+                          height="338"
+                          loading="lazy"
+                          decoding="async"
+                          class="w-full"
+                        />
+                      </div>
+
+                      <div>
+                        <div class="font-mono text-[0.58rem] font-bold uppercase tracking-[0.17em] text-blue-600">
+                          {id} / {(projectIndex + 1).toString().padStart(2, "0")}
+                        </div>
+                        <h3 class="mt-2 max-w-2xl text-xl font-extrabold leading-tight tracking-[-0.025em] text-slate-950 sm:text-2xl">
+                          {project.title}
+                        </h3>
+                        <p class="mt-2 text-xs font-bold uppercase tracking-[0.09em] text-slate-400">{project.subtitle}</p>
+                        <p class="mt-4 max-w-2xl text-sm leading-6 text-slate-600">{project.description}</p>
+                        <div class="mt-5 flex flex-wrap gap-2">
+                          {project.tags.map((tag) => <span class="project-tag">{tag}</span>)}
+                        </div>
+                      </div>
+
+                      <div class="flex flex-wrap gap-2 xl:flex-col xl:items-stretch">
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 text-xs font-bold text-white transition hover:bg-blue-700"
+                        >
+                          GitHub
+                          <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" /></svg>
+                        </a>
+                        <button
+                          type="button"
+                          disabled
+                          title="Google Scholar link coming soon"
+                          class="inline-flex h-10 cursor-not-allowed items-center justify-center rounded-lg border border-slate-300 bg-white px-4 text-xs font-bold text-slate-400"
+                        >
+                          Google Scholar
+                        </button>
+                      </div>
+                    </article>
+                  ))}
+                </>
+              )}
+
+              {reserved.map((projectTitle, reservedIndex) => (
+                <article class="reserved-row group grid min-h-36 items-center gap-5 py-7 sm:grid-cols-[3.5rem_1fr_auto] sm:gap-7 sm:py-8">
+                  <div class="blueprint-index grid h-12 w-12 place-items-center rounded-xl border border-dashed border-slate-300 bg-slate-50 font-mono text-[0.65rem] font-black text-slate-300 transition">
+                    {(projects.length + reservedIndex + 1).toString().padStart(2, "0")}
+                  </div>
+                  <div>
+                    <div class="font-mono text-[0.56rem] font-bold uppercase tracking-[0.17em] text-slate-400">
+                      {id} / reserved slot
+                    </div>
+                    <h3 class="mt-2 text-lg font-extrabold tracking-[-0.02em] text-slate-700">{projectTitle}</h3>
+                    <p class="mt-2 text-sm leading-6 text-slate-400">
+                      Project details, technologies, and links will be added here.
+                    </p>
+                  </div>
+                  <span class="w-fit rounded-full border border-slate-200 bg-slate-50 px-3 py-1 font-mono text-[0.56rem] font-bold uppercase tracking-[0.14em] text-slate-400">
+                    Reserved
+                  </span>
+                </article>
+              ))}
+            </div>
+          </section>
+        ))
+      }
+    </div>
+
+    <div class="flex flex-col items-start justify-between gap-4 border-t border-slate-200 pt-7 sm:flex-row sm:items-center">
+      <p class="font-mono text-[0.6rem] font-bold uppercase tracking-[0.16em] text-slate-400">Archive status / 01 published / 08 reserved</p>
+      <a href="/" class="group inline-flex items-center gap-2 text-sm font-extrabold text-slate-800 transition hover:text-blue-600">
+        Back to home
+        <span class="transition-transform group-hover:translate-x-1">-&gt;</span>
+      </a>
+    </div>
   </div>
+</SiteLayout>
 
-  <HorizontalCard
-    title="GAANet: Global-guided Asymmetric Attention Network for Audio-Visual Speech Separation"
-    img="/proj1_img.webp"
-    desc="GAANet introduces a novel asymmetric multi-scale fusion framework combined with a global-guided attention mechanism, significantly improving audio-visual speech separation performance. The method achieves state-of-the-art results on the LRS2 and VoxCeleb2 datasets while maintaining efficient computational performance."
-    url="https://github.com/redizzy/GAANet"
-    badge="NEW"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Demo Project 2"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-  />
+<style>
+  .project-tag {
+    border: 1px solid #cbd5e1;
+    border-radius: 9999px;
+    background: #f8fafc;
+    padding: 0.36rem 0.6rem;
+    color: #64748b;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.58rem;
+    font-weight: 700;
+  }
 
-  <div>
-    <div class="text-3xl w-full font-bold mb-5 mt-10">Web3</div>
-  </div>
-
-  <HorizontalCard
-    title="Demo Project 3"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="FOSS"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Demo Project 4"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Demo Project 5"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-  />
-</BaseLayout>
+  .reserved-row:hover .blueprint-index {
+    border-color: #93c5fd;
+    background: #eff6ff;
+    color: #3b82f6;
+  }
+</style>

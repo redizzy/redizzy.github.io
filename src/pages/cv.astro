@@ -1,97 +1,153 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import TimeLineElement from "../components/cv/TimeLine.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+
+const awards = [
+  "2025 National First Prize in the Mathematical Modeling Competition for College Students",
+  "2024 Blue Bridge Cup Provincial First Prize in C++ University Group A",
+  "2024 Mathematics Competition (Mathematics Group) Second Prize",
+];
+
+const skills = ["Python", "C", "C++", "R", "SQL", "Linux", "Git", "Matlab", "LaTeX", "English"];
 ---
 
-<BaseLayout title="Resume" sideBarActiveItemID="cv">
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Profile</div>
+<SiteLayout
+  title="CV | Dizzy"
+  description="The education, experience, awards, and technical skills of Zhang Zhiyuan."
+  bodyClass="content-page"
+>
+  <div class="mx-auto w-full max-w-7xl px-6 pb-24 pt-32 sm:px-8 sm:pb-28 sm:pt-36">
+    <header class="grid gap-8 border-b border-slate-200 pb-12 sm:pb-16 lg:grid-cols-[1fr_auto] lg:items-end">
+      <div>
+        <div class="mb-5 flex items-center gap-3 font-mono text-[0.65rem] font-bold uppercase tracking-[0.24em] text-blue-600">
+          <span>Index / CV</span>
+          <span class="h-px w-10 bg-blue-600"></span>
+          <span>Current record</span>
+        </div>
+        <h1 class="text-5xl font-black leading-[0.95] tracking-[-0.055em] text-slate-950 sm:text-6xl lg:text-7xl">Zhang Zhiyuan.</h1>
+        <p class="mt-5 font-mono text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Information and Computational Science / HFUT</p>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <a href="mailto:zhiyuan.dizzy@outlook.com" class="inline-flex h-10 items-center rounded-lg bg-blue-600 px-4 text-xs font-bold text-white transition hover:bg-blue-700">Email</a>
+        <a href="https://github.com/redizzy" target="_blank" rel="noopener noreferrer" class="inline-flex h-10 items-center rounded-lg border border-slate-300 bg-white px-4 text-xs font-bold text-slate-700 transition hover:border-blue-300 hover:text-blue-600">GitHub</a>
+      </div>
+    </header>
+
+    <div class="divide-y divide-slate-200">
+      <section class="cv-section grid gap-7 py-12 sm:py-14 lg:grid-cols-[14rem_1fr] lg:gap-16">
+        <header>
+          <span class="cv-index">01 / Profile</span>
+          <h2 class="cv-heading">About</h2>
+        </header>
+        <p class="max-w-3xl text-base leading-8 text-slate-600">
+          Hello, I'm Zhang Zhiyuan, an undergraduate student in Information and Computational Science
+          at Hefei University of Technology. My interests include data analysis, mathematical modeling,
+          and deep learning, with a focus on logical reasoning and practical problem-solving.
+        </p>
+      </section>
+
+      <section class="cv-section grid gap-7 py-12 sm:py-14 lg:grid-cols-[14rem_1fr] lg:gap-16">
+        <header>
+          <span class="cv-index">02 / Education</span>
+          <h2 class="cv-heading">Study</h2>
+        </header>
+        <article class="record-row border-l-2 border-blue-500 pl-6 sm:pl-8">
+          <div class="record-period">Sep 2023 - Present</div>
+          <h3 class="record-title">Bachelor of Science in Information and Computing Science</h3>
+          <p class="record-meta">Hefei University of Technology / School of Mathematics / Hefei, China</p>
+        </article>
+      </section>
+
+      <section class="cv-section grid gap-7 py-12 sm:py-14 lg:grid-cols-[14rem_1fr] lg:gap-16">
+        <header>
+          <span class="cv-index">03 / Experience</span>
+          <h2 class="cv-heading">Work</h2>
+        </header>
+        <article class="record-row border-l-2 border-blue-500 pl-6 sm:pl-8">
+          <div class="record-period">Dec 2024 - Jun 2025</div>
+          <h3 class="record-title">Quantitative Trading Consultant</h3>
+          <p class="record-meta">WorldQuant / Remote</p>
+          <p class="mt-4 max-w-3xl text-sm leading-7 text-slate-600">
+            Developed quantitative factors, automated alpha backtesting in Python, and optimized
+            strategies through literature review.
+          </p>
+        </article>
+      </section>
+
+      <section class="cv-section grid gap-7 py-12 sm:py-14 lg:grid-cols-[14rem_1fr] lg:gap-16">
+        <header>
+          <span class="cv-index">04 / Awards</span>
+          <h2 class="cv-heading">Recognition</h2>
+        </header>
+        <ol class="divide-y divide-slate-200 border-y border-slate-200">
+          {awards.map((award, index) => (
+            <li class="grid gap-3 py-5 sm:grid-cols-[2.5rem_1fr] sm:items-start">
+              <span class="font-mono text-[0.62rem] font-black text-blue-600">{(index + 1).toString().padStart(2, "0")}</span>
+              <span class="text-sm font-semibold leading-6 text-slate-700">{award}</span>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section class="cv-section grid gap-7 py-12 sm:py-14 lg:grid-cols-[14rem_1fr] lg:gap-16">
+        <header>
+          <span class="cv-index">05 / Certification</span>
+          <h2 class="cv-heading">Language</h2>
+        </header>
+        <div class="flex items-baseline gap-4 border-y border-slate-200 py-6">
+          <span class="text-lg font-extrabold text-slate-950">GRE</span>
+          <span class="font-mono text-sm font-black text-blue-600">321</span>
+          <span class="text-sm text-slate-400">English</span>
+        </div>
+      </section>
+
+      <section class="cv-section grid gap-7 py-12 sm:py-14 lg:grid-cols-[14rem_1fr] lg:gap-16">
+        <header>
+          <span class="cv-index">06 / Skills</span>
+          <h2 class="cv-heading">Toolkit</h2>
+        </header>
+        <ul class="grid grid-cols-2 border-l border-t border-slate-200 sm:grid-cols-3 lg:grid-cols-5">
+          {skills.map((skill) => <li class="border-b border-r border-slate-200 px-4 py-4 text-sm font-bold text-slate-700">{skill}</li>)}
+        </ul>
+      </section>
+    </div>
+
+    <div class="flex justify-end border-t border-slate-200 pt-7">
+      <a href="/" class="group inline-flex items-center gap-2 text-sm font-extrabold text-slate-800 transition hover:text-blue-600">Back to home <span class="transition-transform group-hover:translate-x-1">-&gt;</span></a>
+    </div>
   </div>
+</SiteLayout>
 
-  <div class="mb-10 text-justify">
-    Hello, I’m Zhang Zhiyuan, an undergraduate student in Information and Computational Science at Hefei University of Technology. My research areas include data analysis, mathematical modeling, and deep learning, with a strong focus on logical reasoning and problem-solving. I am passionate about applying theory to practical problems and continuously exploring challenges in the field of technology.
-  </div>
+<style>
+  .cv-index,
+  .record-period {
+    color: #2563eb;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
 
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Education</div>
-  </div>
+  .cv-heading {
+    margin-top: 0.65rem;
+    color: #0f172a;
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
 
-  <div class="time-line-container grid gap-4 mb-10">
-    <TimeLineElement
-      title="Bachelor of Science in Information and Computing Science"
-      subtitle="Sep 2023 to Present at Hefei University of Technology, School of Mathematics, Hefei, China"
-    />
-    
-  </div>
+  .record-title {
+    margin-top: 0.7rem;
+    color: #0f172a;
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
 
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Experience</div>
-  </div>
-
-  <div class="time-line-container mb-10">
-    <TimeLineElement
-      title="WorldQuant Quantitative Trading Consultant"
-      subtitle="From Dec 2024 to Jun 2025 at WorldQuant, Remote"
-    >
-      Developed quantitative factors, automated alpha backtesting in Python, and optimized strategies through literature review.
-    </TimeLineElement>
-
-    <TimeLineElement
-      title="Job Title at Project or Company Name"
-      subtitle="From [Start Date] to [End Date] at [Company], [City], [Country]"
-    >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-    </TimeLineElement>
-    <TimeLineElement
-      title="Job Title at Project or Company Name"
-      subtitle="From [Start Date] to [End Date] at [Company], [City], [Country]"
-    >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-    </TimeLineElement>
-  </div>
-
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Awards</div>
-  </div>
-
-  <ul class="list-disc mx-6 mb-10 grid gap-2">
-      <li>
-        <a target="_blank">2025 National First Prize in the Mathematical Modeling Competition for College Students</a>
-      </li>
-      <li>
-        <a target="_blank">2024 Blue Bridge Cup Provincial First Prize in C++ University Group A</a>
-      </li>
-      <li>
-        <a target="_blank">2024 Mathematics Competition (Mathematics Group) Second Prize</a>
-      </li>
-  </ul>
-
-
-
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Certifications</div>
-  </div>
-
-  <ul class="list-disc mx-6 mb-10 grid gap-2">
-    <li>
-      <a target="_blank"> English: GRE:321</a>
-    </li>
-  </ul>
-
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Skills</div>
-  </div>
-
-  <ul class="list-disc md:columns-5 columns-2 mx-6">
-    <li>Python</li>
-    <li>C</li>
-    <li>C++</li>
-    <li>R</li>
-    <li>SQL</li>
-    <li>Linux</li>
-    <li>Git</li>
-    <li>Matlab</li>
-    <li>Latex</li>
-    <li>English</li>
-  </ul>
-</BaseLayout>
+  .record-meta {
+    margin-top: 0.45rem;
+    color: #64748b;
+    font-size: 0.8rem;
+    line-height: 1.5rem;
+  }
+</style>

@@ -1,0 +1,115 @@
+<section id="contact" class="contact-section relative overflow-hidden">
+  <div class="contact-grid pointer-events-none absolute inset-0" aria-hidden="true"></div>
+  <div class="contact-glow pointer-events-none absolute -bottom-56 left-1/2 h-[32rem] w-[50rem] -translate-x-1/2 rounded-full bg-blue-200/60 blur-3xl" aria-hidden="true"></div>
+
+  <div class="relative mx-auto max-w-7xl px-6 py-24 sm:px-8 sm:py-28 lg:py-32">
+    <div class="contact-panel relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white/80 p-7 shadow-[0_35px_90px_-55px_rgba(15,23,42,0.4)] backdrop-blur-xl sm:p-10 lg:rounded-[2.5rem] lg:p-14">
+      <svg class="contact-orbit pointer-events-none absolute -right-20 -top-24 h-[28rem] w-[28rem] text-blue-600/10" viewBox="0 0 440 440" fill="none" aria-hidden="true">
+        <circle cx="220" cy="220" r="92" stroke="currentColor"></circle>
+        <circle cx="220" cy="220" r="154" stroke="currentColor" stroke-dasharray="5 9"></circle>
+        <circle cx="220" cy="220" r="205" stroke="currentColor"></circle>
+        <circle cx="374" cy="220" r="8" fill="#2563eb" fill-opacity="0.55"></circle>
+        <circle cx="105" cy="117" r="6" fill="#2563eb" fill-opacity="0.35"></circle>
+        <path d="M105 117 220 220 374 220" stroke="#2563eb" stroke-opacity="0.2"></path>
+      </svg>
+
+      <div class="relative grid gap-14 lg:grid-cols-[1.2fr_0.8fr] lg:gap-20">
+        <div>
+          <div class="mb-5 flex items-center gap-3 font-mono text-[0.65rem] font-bold uppercase tracking-[0.24em] text-blue-600">
+            <span>05</span>
+            <span class="h-px w-10 bg-blue-600"></span>
+            Contact
+          </div>
+          <h2 class="max-w-3xl text-4xl font-black leading-[0.98] tracking-[-0.05em] text-slate-950 sm:text-5xl lg:text-7xl">
+            Have an idea?<br /><span class="text-blue-600">Let's explore it.</span>
+          </h2>
+          <p class="mt-7 max-w-2xl text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
+            If you want to talk about mathematics, AI, data science, research, or an interesting
+            problem worth thinking through, send me a message.
+          </p>
+
+          <a
+            href="mailto:zhiyuan.dizzy@outlook.com"
+            class="email-link group mt-10 inline-flex max-w-full items-center gap-3 border-b-2 border-slate-950 pb-2 text-lg font-extrabold tracking-tight text-slate-950 transition hover:border-blue-600 hover:text-blue-600 sm:text-2xl"
+          >
+            <span class="truncate">zhiyuan.dizzy@outlook.com</span>
+            <svg class="h-5 w-5 shrink-0 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6"></path>
+            </svg>
+          </a>
+        </div>
+
+        <div class="flex flex-col justify-end">
+          <div class="rounded-2xl border border-blue-100 bg-blue-50/80 p-6 sm:p-7">
+            <div class="flex items-center gap-3">
+              <span class="relative flex h-2.5 w-2.5">
+                <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-500 opacity-40 motion-reduce:animate-none"></span>
+                <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-blue-600"></span>
+              </span>
+              <span class="font-mono text-[0.62rem] font-bold uppercase tracking-[0.18em] text-blue-700">Open to conversation</span>
+            </div>
+            <p class="mt-5 text-sm leading-6 text-slate-600">
+              Email is the most reliable way to reach me. Include a little context and I will reply
+              when I can give it proper attention.
+            </p>
+          </div>
+
+          <nav class="mt-4 grid grid-cols-2 gap-3" aria-label="Additional contact links">
+            <a href="https://github.com/redizzy" target="_blank" rel="noopener noreferrer" class="contact-link group flex items-center justify-between rounded-2xl border border-slate-200 bg-white px-5 py-4 text-sm font-extrabold text-slate-800 transition hover:border-blue-300 hover:text-blue-600">
+              GitHub
+              <svg class="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"></path></svg>
+            </a>
+            <a href="/cv" class="contact-link group flex items-center justify-between rounded-2xl border border-slate-200 bg-white px-5 py-4 text-sm font-extrabold text-slate-800 transition hover:border-blue-300 hover:text-blue-600">
+              View CV
+              <span class="font-mono transition-transform group-hover:translate-x-1">-&gt;</span>
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="relative mt-16 flex flex-col justify-between gap-4 border-t border-slate-200 pt-6 font-mono text-[0.6rem] font-bold uppercase tracking-[0.16em] text-slate-400 sm:flex-row sm:items-center">
+        <span>Mathematics / Intelligence / Systems</span>
+        <span>From a question to the next experiment</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 35%, #eff6ff 100%);
+  }
+
+  .contact-grid {
+    background-image:
+      linear-gradient(rgb(71 85 105 / 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(71 85 105 / 0.035) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: linear-gradient(to bottom, transparent, black 25%, black 85%, transparent);
+  }
+
+  .contact-orbit {
+    animation: orbit-turn 50s linear infinite;
+    transform-origin: center;
+  }
+
+  .contact-link {
+    box-shadow: 0 14px 35px -30px rgb(15 23 42 / 0.45);
+  }
+
+  @keyframes orbit-turn {
+    to { transform: rotate(360deg); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .contact-orbit,
+    .email-link,
+    .email-link svg,
+    .contact-link,
+    .contact-link svg,
+    .contact-link span {
+      animation: none;
+      transition: none;
+    }
+  }
+</style>

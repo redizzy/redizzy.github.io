@@ -7,5 +7,5 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   site: 'https://redizzy.github.io',
   base: '/',
-  integrations: [mdx(), tailwind()]
+  integrations: [mdx(), sitemap(), tailwind()]
 });
