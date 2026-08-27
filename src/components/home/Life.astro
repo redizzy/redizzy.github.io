@@ -5,7 +5,7 @@
     <div class="mb-12 grid items-end gap-6 lg:grid-cols-[1fr_0.62fr] lg:gap-16">
       <div>
         <div class="mb-4 flex items-center gap-3 font-mono text-[0.65rem] font-bold uppercase tracking-[0.24em] text-blue-700">
-          <span>06</span>
+          <span>05</span>
           <span class="h-px w-10 bg-blue-700"></span>
           Beyond the screen
         </div>
@@ -43,16 +43,16 @@
           <div class="board-wrap relative mx-auto aspect-square w-full max-w-[25rem] rounded-2xl border border-slate-950/20 bg-[#deb46f] p-[7%] shadow-[0_30px_70px_-35px_rgba(50,31,10,0.75)]" aria-hidden="true">
             <div class="go-board relative h-full w-full border border-slate-900/50">
               <span class="star-point left-[16.666%] top-[16.666%]"></span>
-              <span class="star-point right-[16.666%] top-[16.666%]"></span>
+              <span class="star-point left-[83.333%] top-[16.666%]"></span>
               <span class="star-point left-1/2 top-1/2"></span>
-              <span class="star-point bottom-[16.666%] left-[16.666%]"></span>
-              <span class="star-point bottom-[16.666%] right-[16.666%]"></span>
+              <span class="star-point left-[16.666%] top-[83.333%]"></span>
+              <span class="star-point left-[83.333%] top-[83.333%]"></span>
 
-              <span class="stone stone-black left-[16.666%] top-[16.666%]"></span>
-              <span class="stone stone-white right-[16.666%] top-[33.333%]"></span>
-              <span class="stone stone-black bottom-[16.666%] left-[33.333%]"></span>
-              <span class="stone stone-white bottom-[33.333%] right-[33.333%]"></span>
-              <span class="stone stone-last left-1/2 top-1/2"></span>
+              <span class="stone stone-black left-[22.222%] top-[16.666%]"></span>
+              <span class="stone stone-white left-[77.777%] top-[33.333%]"></span>
+              <span class="stone stone-black left-[33.333%] top-[77.777%]"></span>
+              <span class="stone stone-white left-[66.666%] top-[61.111%]"></span>
+              <span class="stone stone-last left-1/2 top-[44.444%]"></span>
             </div>
             <span class="absolute bottom-2 right-3 font-serif text-xs italic text-slate-900/40">one move at a time</span>
           </div>
@@ -74,8 +74,23 @@
             <span class="life-label border-white/20 bg-white/10 text-orange-50">Rhythm / Teamwork</span>
             <div class="basketball grid h-14 w-14 place-items-center rounded-full border-2 border-slate-950/70 bg-[#df7a43] shadow-xl shadow-orange-950/20" aria-hidden="true">
               <svg viewBox="0 0 48 48" class="h-full w-full" fill="none">
-                <circle cx="24" cy="24" r="23" stroke="#33180f" stroke-opacity="0.8"></circle>
-                <path d="M4 15c12 2 20 13 20 29M44 15C32 17 24 28 24 44M2 28h44M17 2c3 10 13 16 29 17" stroke="#33180f" stroke-opacity="0.75" stroke-width="1.5"></path>
+                <defs>
+                  <radialGradient id="basketball-shade" cx="0" cy="0" r="1" gradientTransform="translate(16 13) rotate(48) scale(42)">
+                    <stop stop-color="#f59a58"></stop>
+                    <stop offset="0.7" stop-color="#df743d"></stop>
+                    <stop offset="1" stop-color="#b94d29"></stop>
+                  </radialGradient>
+                  <clipPath id="basketball-clip">
+                    <circle cx="24" cy="24" r="22.5"></circle>
+                  </clipPath>
+                </defs>
+                <circle cx="24" cy="24" r="22.5" fill="url(#basketball-shade)" stroke="#33180f" stroke-width="1.5"></circle>
+                <g clip-path="url(#basketball-clip)" stroke="#33180f" stroke-width="1.7" stroke-linecap="round">
+                  <path d="M7 7 41 41"></path>
+                  <path d="M41 7 7 41"></path>
+                  <path d="M19 1.5c2.7 7.2 2.4 12.6-1.2 16.3S8.7 22.2 1.5 19.5"></path>
+                  <path d="M46.5 28.5c-7.2-2.7-12.7-2.4-16.3 1.3s-4.3 9.1-1.7 16.7"></path>
+                </g>
               </svg>
             </div>
           </div>
@@ -135,15 +150,15 @@
 
   .go-board {
     background-image:
-      linear-gradient(to right, transparent calc(100% - 1px), rgb(15 23 42 / 0.48) 1px),
-      linear-gradient(to bottom, transparent calc(100% - 1px), rgb(15 23 42 / 0.48) 1px);
-    background-size: 5.555555% 5.555555%;
+      linear-gradient(to right, rgb(15 23 42 / 0.48) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(15 23 42 / 0.48) 1px, transparent 1px);
+    background-size: calc(100% / 18) calc(100% / 18);
   }
 
   .star-point {
     position: absolute;
-    width: 0.35rem;
-    height: 0.35rem;
+    width: 1.2%;
+    height: 1.2%;
     border-radius: 9999px;
     background: rgb(15 23 42 / 0.75);
     transform: translate(-50%, -50%);
@@ -151,8 +166,8 @@
 
   .stone {
     position: absolute;
-    width: clamp(1.25rem, 4.3vw, 2.2rem);
-    height: clamp(1.25rem, 4.3vw, 2.2rem);
+    width: 4.8%;
+    height: 4.8%;
     border-radius: 9999px;
     box-shadow: 0 7px 10px -6px rgb(50 31 10 / 0.7);
     transform: translate(-50%, -50%);
