@@ -1,34 +1,40 @@
 ---
 const links = [
-  { id: "skills", label: "Skills", index: "01" },
-  { id: "projects", label: "Projects", index: "02" },
-  { id: "journey", label: "Journey", index: "03" },
-  { id: "blog", label: "Writing", index: "04" },
-  { id: "life", label: "Life", index: "05" },
+  { id: "research", label: "Research", index: "01" },
+  { id: "software", label: "Software", index: "02" },
+  { id: "journey", label: "Background", index: "03" },
+  { id: "skills", label: "Skills", index: "04" },
+  { id: "blog", label: "Writing", index: "05" },
+  { id: "life", label: "Life", index: "06" },
 ];
 
 const pathname = Astro.url.pathname;
-const pageSection = pathname.startsWith("/projects")
-  ? "projects"
-  : pathname.startsWith("/blog")
-    ? "blog"
-    : "";
+const isCV = pathname === "/cv" || pathname === "/cv/";
+const isProjectArchive = pathname === "/projects" || pathname === "/projects/";
+const pageSection = pathname.startsWith("/blog") ? "blog" : "";
+const navigationLinks = links.map((link) => {
+  const section = isProjectArchive && link.id === "research" ? "academic" : link.id;
+  const href = isProjectArchive && (link.id === "research" || link.id === "software")
+    ? `/projects#${section}`
+    : `/#${link.id}`;
+  return { ...link, section, href };
+});
 ---
 
 <header class="nav-wrap fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5" data-home-nav data-page-section={pageSection}>
   <nav class="site-nav relative mx-auto flex h-14 max-w-7xl items-center justify-between rounded-2xl border border-white/70 bg-white/80 px-3 shadow-[0_12px_45px_-24px_rgba(15,23,42,0.35)] backdrop-blur-xl sm:px-4" aria-label="Main navigation">
-    <a href="/#home" class="brand group flex h-10 items-center gap-3 rounded-xl px-2" data-section="home" aria-label="Dizzy, back to home">
+    <a href="/#home" class="brand group flex h-10 items-center gap-3 rounded-xl px-2" data-section="home" aria-label="Zhang Zhiyuan (Dizzy), back to home">
       <span class="grid h-8 w-8 place-items-center rounded-lg bg-slate-950 font-mono text-xs font-black tracking-tight text-white transition-colors group-hover:bg-blue-600">DZ</span>
       <span class="hidden leading-none sm:block">
         <span class="block text-sm font-extrabold tracking-[-0.02em] text-slate-950">Dizzy</span>
-        <span class="mt-1 block font-mono text-[0.55rem] uppercase tracking-[0.18em] text-slate-400">Personal index</span>
+        <span class="mt-1 block font-mono text-[0.55rem] uppercase tracking-[0.18em] text-slate-500">Research & Software</span>
       </span>
     </a>
 
-    <div class="hidden items-center lg:flex">
+    <div class="hidden items-center xl:flex">
       {
-        links.map(({ id, label, index }) => (
-          <a href={`/#${id}`} class="nav-link relative flex h-10 items-center gap-1.5 rounded-lg px-3 text-sm font-semibold text-slate-500 transition-colors hover:text-slate-950" data-section={id}>
+        navigationLinks.map(({ section, href, label, index }) => (
+          <a href={href} class="nav-link relative flex h-10 items-center gap-1.5 rounded-lg px-3 text-sm font-semibold text-slate-500 transition-colors hover:text-slate-950" data-section={section}>
             <span class="font-mono text-[0.55rem] text-slate-300">{index}</span>
             {label}
           </a>
@@ -37,6 +43,7 @@ const pageSection = pathname.startsWith("/projects")
     </div>
 
     <div class="flex items-center gap-1.5">
+      <a href="/cv" aria-current={isCV ? "page" : undefined} class="cv-link hidden h-9 items-center rounded-lg px-3 text-xs font-bold text-slate-700 transition hover:bg-slate-100 hover:text-blue-700 xl:flex">CV</a>
       <a
         href="https://github.com/redizzy"
         target="_blank"
@@ -49,19 +56,19 @@ const pageSection = pathname.startsWith("/projects")
         </svg>
       </a>
       <a href="/#contact" class="contact-link hidden h-9 items-center gap-2 rounded-lg bg-slate-950 px-4 text-xs font-bold text-white transition hover:bg-blue-600 sm:flex" data-section="contact">
-        Let's talk
+        Contact
         <span class="h-1.5 w-1.5 rounded-full bg-blue-400"></span>
       </a>
 
-      <details class="mobile-menu relative lg:hidden" data-mobile-menu>
+      <details class="mobile-menu relative xl:hidden" data-mobile-menu>
         <summary class="grid h-9 w-9 cursor-pointer list-none place-items-center rounded-lg text-slate-600 transition hover:bg-slate-100 hover:text-slate-950" aria-label="Open navigation menu">
           <span class="menu-lines relative h-3.5 w-5" aria-hidden="true"></span>
         </summary>
-        <div class="menu-panel absolute right-0 top-12 w-[min(19rem,calc(100vw-1.5rem))] overflow-hidden rounded-2xl border border-slate-200 bg-white p-2 shadow-2xl shadow-slate-950/15">
+        <div class="menu-panel absolute right-0 top-12 max-h-[calc(100dvh-6rem)] w-[min(19rem,calc(100vw-1.5rem))] overflow-y-auto rounded-2xl border border-slate-200 bg-white p-2 shadow-2xl shadow-slate-950/15">
           <div class="px-3 pb-2 pt-2 font-mono text-[0.6rem] uppercase tracking-[0.2em] text-slate-400">Navigate the index</div>
           {
-            links.map(({ id, label, index }) => (
-              <a href={`/#${id}`} class="mobile-link flex items-center justify-between rounded-xl px-3 py-3 text-sm font-bold text-slate-700 transition hover:bg-slate-100 hover:text-blue-700" data-section={id}>
+            navigationLinks.map(({ section, href, label, index }) => (
+              <a href={href} class="mobile-link flex items-center justify-between rounded-xl px-3 py-3 text-sm font-bold text-slate-700 transition hover:bg-slate-100 hover:text-blue-700" data-section={section}>
                 <span>{label}</span>
                 <span class="font-mono text-[0.6rem] text-slate-300">{index}</span>
               </a>
@@ -69,7 +76,7 @@ const pageSection = pathname.startsWith("/projects")
           }
           <div class="my-2 h-px bg-slate-100"></div>
           <div class="grid grid-cols-2 gap-2">
-            <a href="/cv" class="rounded-xl bg-slate-100 px-3 py-3 text-center text-xs font-bold text-slate-700 transition hover:bg-slate-200">View CV</a>
+            <a href="/cv" aria-current={isCV ? "page" : undefined} class="cv-link rounded-xl bg-slate-100 px-3 py-3 text-center text-xs font-bold text-slate-700 transition hover:bg-slate-200">View CV</a>
             <a href="/#contact" class="rounded-xl bg-slate-950 px-3 py-3 text-center text-xs font-bold text-white transition hover:bg-blue-600" data-section="contact">Contact</a>
           </div>
         </div>
@@ -196,6 +203,11 @@ const pageSection = pathname.startsWith("/projects")
 
   .contact-link[data-active] {
     background: #2563eb;
+  }
+
+  .cv-link[aria-current="page"] {
+    background: #eff6ff;
+    color: #1d4ed8;
   }
 
   .scroll-progress {

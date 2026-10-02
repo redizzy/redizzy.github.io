@@ -7,13 +7,14 @@ import Journey from "../components/home/Journey.astro";
 import Life from "../components/home/Life.astro";
 import LatestPosts from "../components/home/LatestPosts.astro";
 import Contact from "../components/home/Contact.astro";
+import { projectGroups } from "../lib/projects";
 ---
 
 <SiteLayout>
   <Hero />
-  <Skills />
-  <Projects />
+  {projectGroups.map((group, index) => <Projects group={group} index={(index + 1).toString().padStart(2, "0")} />)}
   <Journey />
+  <Skills />
   <LatestPosts />
   <Life />
   <Contact />

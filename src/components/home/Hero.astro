@@ -1,8 +1,8 @@
 ---
 const identities = [
-  "Mathematics student at HFUT",
-  "Aspiring data scientist",
-  "AI & deep learning explorer",
+  "Undergraduate at HFUT",
+  "Machine learning & software engineering",
+  "Research ideas. Working software.",
   "Go player and pattern seeker",
 ];
 ---
@@ -15,51 +15,55 @@ const identities = [
     <div class="relative z-10 max-w-3xl">
       <div class="mb-7 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
         <span class="h-px w-10 bg-blue-600"></span>
-        Mathematics / AI / Data
+        Mathematics / Machine Learning / Software
       </div>
 
-      <h1 class="text-[clamp(3.8rem,9vw,7.5rem)] font-black leading-[0.82] tracking-[-0.07em] text-slate-950">
-        Dizzy<span class="text-blue-600">.</span>
+      <h1 class="text-[clamp(3.5rem,7.5vw,6.5rem)] font-black leading-[0.95] tracking-[-0.055em] text-slate-950">
+        Zhang<br />Zhiyuan<span class="text-blue-600">.</span>
       </h1>
+      <p class="mt-4 font-mono text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Also known as Dizzy</p>
       <p class="mt-6 max-w-2xl text-[clamp(1.65rem,3.2vw,3rem)] font-semibold leading-[1.08] tracking-[-0.035em] text-slate-800">
         Finding signal<br class="hidden sm:block" /> in complexity.
       </p>
 
-      <div class="mt-7 flex min-h-8 items-center gap-2 font-mono text-sm font-medium text-blue-700 sm:text-base">
+      <div class="mt-7 flex min-h-12 items-center gap-2 font-mono text-sm font-medium text-blue-700 sm:text-base">
         <span class="text-slate-400">&gt;</span>
-        <span id="typewriter" data-identities={JSON.stringify(identities)}></span>
-        <span class="typewriter-cursor" aria-hidden="true"></span>
+        <span id="typewriter" data-identities={JSON.stringify(identities)}>{identities[0]}</span>
+        <span class="typewriter-cursor shrink-0" aria-hidden="true"></span>
       </div>
 
       <p class="mt-6 max-w-xl text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
-        I study mathematics, build intelligent systems, and look for the structures hidden beneath
-        noisy data. Away from the screen, I find the same depth on a 19 x 19 Go board.
+        I'm an undergraduate in Information and Computational Science at Hefei University of Technology.
+        My interests span machine learning and software engineering, from audio-visual speech
+        separation research to released applications.
       </p>
 
       <div class="mt-9 flex flex-wrap items-center gap-3">
-        <a href="/#projects" class="btn border-slate-950 bg-slate-950 px-6 text-white hover:border-blue-700 hover:bg-blue-700">
-          Explore my work
+        <a href="/#research" class="btn border-slate-950 bg-slate-950 px-6 text-white hover:border-blue-700 hover:bg-blue-700">
+          Research
         </a>
-        <a href="/#contact" class="btn btn-ghost group px-5 text-slate-700">
-          Start a conversation
+        <a href="/#software" class="btn border-slate-300 bg-white px-6 text-slate-800 hover:border-blue-300 hover:bg-blue-50">Software</a>
+        <a href="/cv" class="btn btn-ghost group px-5 text-slate-700">
+          View CV
           <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M5 12h14M13 6l6 6-6 6"></path>
           </svg>
         </a>
+        <a href="mailto:zhiyuan.dizzy@outlook.com" class="btn btn-ghost px-5 text-slate-700">Email</a>
       </div>
 
       <dl class="mt-12 grid max-w-xl grid-cols-2 gap-6 border-t border-slate-300/80 pt-6 text-sm sm:grid-cols-3">
         <div>
-          <dt class="text-xs uppercase tracking-widest text-slate-400">Based at</dt>
+          <dt class="text-xs uppercase tracking-widest text-slate-500">Based at</dt>
           <dd class="mt-1 font-semibold text-slate-800">HFUT, China</dd>
         </div>
         <div>
-          <dt class="text-xs uppercase tracking-widest text-slate-400">Studying</dt>
-          <dd class="mt-1 font-semibold text-slate-800">Mathematics</dd>
+          <dt class="text-xs uppercase tracking-widest text-slate-500">Research</dt>
+          <dd class="mt-1 font-semibold text-slate-800">Machine Learning</dd>
         </div>
         <div class="col-span-2 sm:col-span-1">
-          <dt class="text-xs uppercase tracking-widest text-slate-400">Building toward</dt>
-          <dd class="mt-1 font-semibold text-slate-800">Data Science</dd>
+          <dt class="text-xs uppercase tracking-widest text-slate-500">Engineering</dt>
+          <dd class="mt-1 font-semibold text-slate-800">Software</dd>
         </div>
       </dl>
     </div>
@@ -122,7 +126,7 @@ const identities = [
 
         <div class="orbit-label orbit-math absolute left-0 top-[19%]">MATHEMATICS</div>
         <div class="orbit-label orbit-ai absolute right-0 top-[34%]">DEEP LEARNING</div>
-        <div class="orbit-label orbit-go absolute bottom-[16%] right-[5%]">GO / BADUK</div>
+        <div class="orbit-label orbit-go absolute bottom-[16%] right-[5%]">SOFTWARE</div>
 
         <div class="absolute right-[8%] top-[5%] grid h-16 w-16 place-items-center rounded-full bg-blue-600 font-mono text-sm font-bold text-white shadow-xl shadow-blue-600/20">
           Σ
@@ -134,7 +138,7 @@ const identities = [
     </div>
   </div>
 
-  <a href="/#skills" class="absolute bottom-5 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-slate-400 transition hover:text-blue-600 lg:flex" aria-label="Scroll to skills">
+  <a href="/#research" class="absolute bottom-5 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-[0.65rem] font-semibold uppercase tracking-[0.24em] text-slate-500 transition hover:text-blue-600 lg:flex" aria-label="Scroll to research">
     Scroll
     <span class="h-8 w-px bg-gradient-to-b from-slate-400 to-transparent"></span>
   </a>
