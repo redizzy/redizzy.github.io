@@ -16,20 +16,6 @@ const reservedProjects = [
     desc: "Reserved for a future research project, with its methods, experiments, and code.",
     variant: "blueprint-a",
   },
-  {
-    group: "software",
-    title: "Demo Project 03",
-    eyebrow: "Open slot",
-    desc: "A future home for another application, developer tool, or software system.",
-    variant: "blueprint-b",
-  },
-  {
-    group: "software",
-    title: "Demo Project 04",
-    eyebrow: "Future idea",
-    desc: "This space will grow when the next idea becomes a complete build.",
-    variant: "blueprint-c",
-  },
 ].filter((project) => project.group === group.id);
 ---
 
@@ -63,8 +49,21 @@ const reservedProjects = [
 
           <div class="grid gap-8 p-7 sm:p-9 lg:grid-cols-2 lg:items-center lg:gap-12">
             <div class="min-w-0">
-              <h3 class="text-4xl font-black tracking-[-0.04em] text-slate-950 sm:text-5xl">{project.name}</h3>
-              <p class="mt-3 text-sm font-bold text-blue-700">{project.subtitle}</p>
+              <div class:list={[group.id === "software" && "flex items-center gap-4 sm:gap-5"]}>
+                {group.id === "software" && (
+                  <div class="grid h-16 w-16 shrink-0 place-items-center overflow-hidden rounded-2xl bg-slate-100 ring-1 ring-inset ring-slate-200 sm:h-24 sm:w-24 sm:rounded-3xl">
+                    {project.icon ? (
+                      <img src={project.icon} alt={`${project.name} app icon`} width="96" height="96" loading="lazy" decoding="async" class="h-full w-full object-contain" />
+                    ) : (
+                      <span class="text-3xl font-black text-slate-400 sm:text-4xl" aria-hidden="true">{project.name.charAt(0)}</span>
+                    )}
+                  </div>
+                )}
+                <div class="min-w-0">
+                  <h3 class:list={["font-black tracking-[-0.04em] text-slate-950 sm:text-5xl", group.id === "software" ? "text-3xl" : "text-4xl"]}>{project.name}</h3>
+                  <p class:list={[group.id === "software" ? "mt-2 text-xs font-normal leading-5 text-slate-500 sm:text-sm sm:leading-6" : "mt-3 text-sm font-bold text-blue-700"]}>{project.subtitle}</p>
+                </div>
+              </div>
               {project.title !== project.name && <p class="mt-4 text-base font-semibold leading-6 text-slate-800">{project.title}</p>}
               <p class="mt-4 text-sm leading-7 text-slate-600">{project.description}</p>
               <div class="mt-5 flex flex-wrap gap-2">
@@ -73,10 +72,14 @@ const reservedProjects = [
 
               <footer class="mt-8 flex flex-col items-start gap-4 border-t border-slate-200 pt-6">
                 <p class="text-sm leading-6 text-slate-600">{project.note}</p>
-                <a href={project.link.href} target="_blank" rel="noopener noreferrer" class="inline-flex min-h-11 items-center gap-2 rounded-lg bg-blue-600 px-5 py-2 text-sm font-bold text-white transition hover:bg-blue-700" aria-label={`${project.name} on ${project.link.label}`}>
-                  {project.link.label}
-                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" /></svg>
-                </a>
+                <div class="flex flex-wrap gap-3">
+                  {project.links.map((link) => (
+                    <a href={link.href} target="_blank" rel="noopener noreferrer" class="inline-flex min-h-11 items-center gap-2 rounded-lg bg-blue-600 px-5 py-2 text-sm font-bold text-white transition hover:bg-blue-700" aria-label={`${project.name} — ${link.label}`}>
+                      {link.label}
+                      <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" /></svg>
+                    </a>
+                  ))}
+                </div>
               </footer>
             </div>
 
@@ -108,36 +111,42 @@ const reservedProjects = [
       ))}
     </div>
 
-    <div class:list={["mt-5 grid gap-4", reservedProjects.length > 1 && "md:grid-cols-2"]}>
-      {
-        reservedProjects.map(({ title, eyebrow, desc, variant }) => (
-          <article class:list={["reserved-project group relative overflow-hidden rounded-[2rem] border border-dashed border-slate-300 bg-slate-50 p-6 sm:p-7", variant]}>
-            <div class="blueprint-grid pointer-events-none absolute inset-0" aria-hidden="true"></div>
-            <div class="blueprint-shape pointer-events-none absolute right-5 top-5 h-20 w-20" aria-hidden="true">
-              <span class="absolute inset-0 rounded-full border border-blue-300/60"></span>
-              <span class="absolute inset-[24%] rotate-45 border border-slate-300"></span>
-              <span class="absolute left-1/2 top-0 h-full w-px bg-slate-200"></span>
-              <span class="absolute left-0 top-1/2 h-px w-full bg-slate-200"></span>
-            </div>
-
-            <div class="relative flex h-full flex-col">
-              <span class="w-fit rounded-full border border-slate-300 bg-white/80 px-2.5 py-1 font-mono text-[0.55rem] font-bold uppercase tracking-[0.14em] text-slate-500">Reserved</span>
-              <div class="mt-auto pt-8">
-                <span class="font-mono text-[0.56rem] font-bold uppercase tracking-[0.17em] text-blue-600">{eyebrow}</span>
-                <h3 class="mt-2 text-xl font-extrabold tracking-tight text-slate-800">{title}</h3>
-                <p class="mt-2 text-xs leading-5 text-slate-500 sm:text-sm sm:leading-6">{desc}</p>
+    {reservedProjects.length > 0 && (
+      <div class:list={["mt-5 grid gap-4", reservedProjects.length > 1 && "md:grid-cols-2"]}>
+        {
+          reservedProjects.map(({ title, eyebrow, desc, variant }) => (
+            <article class:list={["reserved-project group relative overflow-hidden rounded-[2rem] border border-dashed border-slate-300 bg-slate-50 p-6 sm:p-7", variant]}>
+              <div class="blueprint-grid pointer-events-none absolute inset-0" aria-hidden="true"></div>
+              <div class="blueprint-shape pointer-events-none absolute right-5 top-5 h-20 w-20" aria-hidden="true">
+                <span class="absolute inset-0 rounded-full border border-blue-300/60"></span>
+                <span class="absolute inset-[24%] rotate-45 border border-slate-300"></span>
+                <span class="absolute left-1/2 top-0 h-full w-px bg-slate-200"></span>
+                <span class="absolute left-0 top-1/2 h-px w-full bg-slate-200"></span>
               </div>
-            </div>
-          </article>
-        ))
-      }
-    </div>
+
+              <div class="relative flex h-full flex-col">
+                <span class="w-fit rounded-full border border-slate-300 bg-white/80 px-2.5 py-1 font-mono text-[0.55rem] font-bold uppercase tracking-[0.14em] text-slate-500">Reserved</span>
+                <div class="mt-auto pt-8">
+                  <span class="font-mono text-[0.56rem] font-bold uppercase tracking-[0.17em] text-blue-600">{eyebrow}</span>
+                  <h3 class="mt-2 text-xl font-extrabold tracking-tight text-slate-800">{title}</h3>
+                  <p class="mt-2 text-xs leading-5 text-slate-500 sm:text-sm sm:leading-6">{desc}</p>
+                </div>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    )}
 
     <div class="mt-8 flex flex-col items-start justify-between gap-5 border-t border-slate-200 pt-7 sm:flex-row sm:items-center">
       <div class="flex items-center gap-5 font-mono text-[0.6rem] font-bold uppercase tracking-[0.15em]">
         <span class="text-blue-600">{group.projects.length.toString().padStart(2, "0")} featured</span>
-        <span class="h-1 w-1 rounded-full bg-slate-300"></span>
-        <span class="text-slate-500">{reservedProjects.length.toString().padStart(2, "0")} reserved</span>
+        {reservedProjects.length > 0 && (
+          <>
+            <span class="h-1 w-1 rounded-full bg-slate-300"></span>
+            <span class="text-slate-500">{reservedProjects.length.toString().padStart(2, "0")} reserved</span>
+          </>
+        )}
       </div>
       <a href={`/projects#${group.archiveId}`} class="group inline-flex items-center gap-2 text-sm font-extrabold text-slate-800 transition hover:text-blue-600">
         View {group.title.toLowerCase()} projects
@@ -186,22 +195,6 @@ const reservedProjects = [
   .reserved-project:hover .blueprint-shape {
     opacity: 0.85;
     transform: rotate(8deg);
-  }
-
-  .blueprint-b .blueprint-shape {
-    transform: rotate(30deg) scale(0.85);
-  }
-
-  .blueprint-b:hover .blueprint-shape {
-    transform: rotate(38deg) scale(0.85);
-  }
-
-  .blueprint-c .blueprint-shape {
-    transform: rotate(-20deg) scale(0.72);
-  }
-
-  .blueprint-c:hover .blueprint-shape {
-    transform: rotate(-12deg) scale(0.72);
   }
 
   @media (prefers-reduced-motion: reduce) {
