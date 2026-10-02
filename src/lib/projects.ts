@@ -96,14 +96,14 @@ export const projectGroups = [
     id: "research",
     title: "Research",
     archiveId: "academic",
-    description: "My research focuses on machine learning and multimodal understanding, including audio-visual speech separation. Here are the methods, experiments, and research code behind that work.",
+    description: "My research focuses on machine learning and multimodal understanding. Here are the methods, experiments, and research code behind that work.",
     projects: [gaanet],
   },
   {
     id: "software",
     title: "Software",
     archiveId: "software",
-    description: "Applications and tools built around practical needs, including WHOLO for iOS and Bling, an AI-assisted food journal for iOS and Android.",
+    description: "I build software to explore ideas and solve practical problems, with care for both design and engineering.",
     projects: [wholo, bling],
   },
 ];
