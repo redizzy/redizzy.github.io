@@ -16,6 +16,27 @@ The site is built with **Astro** and **Tailwind CSS**, and is automatically depl
 - GitHub Actions (CI/CD)
 - GitHub Pages
 
+## Local Development
+
+Use Node.js 22 and npm. Dependencies are locked in `package-lock.json`.
+
+```sh
+npm ci
+npm run dev
+```
+
+- `npm run build` generates the static site in `dist/`.
+- `npm run preview` serves the production build locally.
+
+## Project Structure
+
+- `src/pages/`: homepage, project archive, CV, blog routes, RSS, and 404 page.
+- `src/layouts/SiteLayout.astro`: shared page layout with the top navigation and footer.
+- `src/layouts/PostLayout.astro`: blog article layout built on the shared layout.
+- `src/components/home/`: homepage sections and navigation.
+- `src/lib/`: shared project and book data, plus URL helpers.
+- `src/content/blog/`: blog posts and their metadata.
+
 ## 📦 Deployment
 
 The website is built and deployed automatically on every push to the `main` branch via GitHub Actions.

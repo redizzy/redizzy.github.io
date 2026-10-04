@@ -1,13 +1,7 @@
 .home-page {
     --home-bg: #f8fafc;
-    --home-surface: #ffffff;
-    --home-surface-muted: #f1f5f9;
     --home-ink: #0f172a;
-    --home-copy: #475569;
-    --home-muted: #94a3b8;
-    --home-line: #cbd5e1;
     --home-accent: #2563eb;
-    --home-accent-dark: #1d4ed8;
     color-scheme: light;
     background: var(--home-bg);
     color: var(--home-ink);
