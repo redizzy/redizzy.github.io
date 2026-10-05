@@ -22,7 +22,7 @@ export const gaanet: Project = {
   subtitle: "Audio-Visual Speech Separation",
   description:
     "An asymmetric multi-scale fusion framework with global-guided attention for refining audio and visual features across scales.",
-  status: "Accepted",
+  status: "Accepted by ICME 2026",
   note: "Accepted for publication. Code is open source; the publication link will be added when available.",
   tags: ["Python", "PyTorch", "Multimodal Learning", "Deep Learning"],
   links: [{ label: "GitHub", href: "https://github.com/redizzy/GAANet" }],
