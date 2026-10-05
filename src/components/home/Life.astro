@@ -1,233 +1,273 @@
-<section id="life" class="life-section relative overflow-hidden">
-  <div class="life-noise pointer-events-none absolute inset-0" aria-hidden="true"></div>
-
-  <div class="relative mx-auto max-w-7xl px-6 py-16 sm:px-8 sm:py-20">
-    <div class="mb-8 grid items-end gap-4 lg:grid-cols-[1fr_0.62fr] lg:gap-12">
-      <div>
-        <div class="mb-3 flex items-center gap-3 font-mono text-[0.65rem] font-bold uppercase tracking-[0.24em] text-blue-700">
-          <span>07</span>
-          <span class="h-px w-10 bg-blue-700"></span>
-          Beyond the screen
-        </div>
-        <h2 class="max-w-4xl text-3xl font-black leading-[1.05] tracking-[-0.045em] text-slate-950 sm:text-4xl lg:text-5xl">
-          Different arenas.<br />The same search for depth.
-        </h2>
+<section id="life" class="border-y border-slate-200/70 bg-slate-50/70" aria-labelledby="life-heading">
+  <div class="mx-auto grid max-w-7xl gap-5 px-6 py-10 sm:px-8 sm:py-12 md:grid-cols-[10rem_minmax(0,1fr)] md:items-center md:gap-8">
+    <header>
+      <div class="flex items-center gap-3 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-slate-400">
+        <span class="text-blue-600">07</span>
+        <span class="h-px w-6 bg-slate-300"></span>
+        Offline
       </div>
-      <p class="max-w-xl text-sm leading-6 text-slate-600 lg:pb-1">
-        Not every pattern lives in data. Some emerge from black and white stones; others from five
-        people moving together on a court.
-      </p>
-    </div>
+      <h2 id="life-heading" class="mt-2 text-4xl font-black leading-[0.98] tracking-[-0.045em] text-slate-950 sm:text-5xl lg:text-6xl">Life.</h2>
+    </header>
 
-    <div class="grid gap-4 lg:min-h-[22rem] lg:grid-cols-12">
-      <article class="go-card group relative overflow-hidden rounded-3xl bg-[#d6a961] p-5 sm:p-6 lg:col-span-7">
-        <div class="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-[#8d5d26]/20" aria-hidden="true"></div>
-        <div class="relative grid h-full gap-5 md:grid-cols-2 md:items-center">
-          <div class="relative z-10 flex h-full flex-col">
-            <div class="flex items-center justify-between md:block">
-              <span class="life-label border-slate-900/20 bg-white/20 text-slate-800">Pattern / Patience</span>
-              <span class="font-mono text-[0.6rem] font-bold uppercase tracking-[0.18em] text-slate-800/50 md:mt-3 md:block">19 x 19</span>
+    <div class="grid min-w-0 grid-cols-2 gap-3 sm:gap-4 xl:grid-cols-4">
+      <article class="hobby-card go-card relative flex h-36 min-w-0 flex-col justify-end overflow-hidden rounded-2xl border p-4 sm:h-28 sm:justify-center sm:px-5">
+        <h3 class="relative z-10 w-fit text-sm font-semibold tracking-tight text-slate-700 sm:text-base">Go</h3>
+        <div class="hobby-art" aria-hidden="true">
+          <div class="board-wrap">
+            <div class="go-board">
+              <span class="stone stone-black left-[25%] top-[37.5%]"></span>
+              <span class="stone stone-white left-[62.5%] top-1/2"></span>
+              <span class="stone stone-black left-1/2 top-[75%]"></span>
             </div>
-            <div class="mt-auto pt-6 md:pt-0">
-              <h3 class="text-3xl font-black tracking-[-0.04em] text-slate-950 sm:text-4xl">Go</h3>
-              <p class="mt-3 max-w-sm text-sm leading-6 text-slate-800/80">
-                A game of local decisions and global consequences. It keeps teaching me to read
-                patterns, balance competing priorities, and stay patient under uncertainty.
-              </p>
-              <div class="mt-4 flex items-center gap-3 font-mono text-[0.6rem] font-bold uppercase tracking-[0.14em] text-slate-800/60">
-                <span>Read</span><span class="h-px w-5 bg-slate-800/30"></span><span>Balance</span><span class="h-px w-5 bg-slate-800/30"></span><span>Adapt</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="board-wrap relative mx-auto aspect-square w-full max-w-[16rem] rounded-2xl border border-slate-950/20 bg-[#deb46f] p-[7%] shadow-[0_30px_70px_-35px_rgba(50,31,10,0.75)]" aria-hidden="true">
-            <div class="go-board relative h-full w-full border border-slate-900/50">
-              <span class="star-point left-[16.666%] top-[16.666%]"></span>
-              <span class="star-point left-[83.333%] top-[16.666%]"></span>
-              <span class="star-point left-1/2 top-1/2"></span>
-              <span class="star-point left-[16.666%] top-[83.333%]"></span>
-              <span class="star-point left-[83.333%] top-[83.333%]"></span>
-
-              <span class="stone stone-black left-[22.222%] top-[16.666%]"></span>
-              <span class="stone stone-white left-[77.777%] top-[33.333%]"></span>
-              <span class="stone stone-black left-[33.333%] top-[77.777%]"></span>
-              <span class="stone stone-white left-[66.666%] top-[61.111%]"></span>
-              <span class="stone stone-last left-1/2 top-[44.444%]"></span>
-            </div>
-            <span class="absolute bottom-2 right-3 font-serif text-xs italic text-slate-900/40">one move at a time</span>
           </div>
         </div>
       </article>
 
-      <article class="basketball-card group relative overflow-hidden rounded-3xl bg-[#c85d32] p-5 text-white sm:p-6 lg:col-span-5">
-        <svg class="court-lines pointer-events-none absolute inset-0 h-full w-full opacity-40" viewBox="0 0 500 540" fill="none" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <rect x="1" y="1" width="498" height="538" rx="30" stroke="white" stroke-opacity="0.35" stroke-width="2"></rect>
-          <path d="M250 0V540M0 270H500" stroke="white" stroke-opacity="0.22" stroke-width="2"></path>
-          <circle cx="250" cy="270" r="72" stroke="white" stroke-opacity="0.28" stroke-width="2"></circle>
-          <path d="M144 0v115h212V0M181 115a69 69 0 0 0 138 0M144 540V425h212v115M181 425a69 69 0 0 1 138 0" stroke="white" stroke-opacity="0.3" stroke-width="2"></path>
-          <path class="play-route" d="M70 454C124 409 100 329 191 318C286 307 244 195 352 170C397 160 423 126 431 77" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-dasharray="8 10"></path>
-          <path d="m420 89 12-14 7 17" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-        </svg>
-
-        <div class="relative flex h-full flex-col">
-          <div class="flex items-start justify-between gap-4">
-            <span class="life-label border-white/20 bg-white/10 text-orange-50">Rhythm / Teamwork</span>
-            <div class="basketball grid h-12 w-12 shrink-0 place-items-center rounded-full border-2 border-slate-950/70 bg-[#df7a43] shadow-xl shadow-orange-950/20" aria-hidden="true">
-              <svg viewBox="0 0 48 48" class="h-full w-full" fill="none">
-                <defs>
-                  <radialGradient id="basketball-shade" cx="0" cy="0" r="1" gradientTransform="translate(16 13) rotate(48) scale(42)">
-                    <stop stop-color="#f59a58"></stop>
-                    <stop offset="0.7" stop-color="#df743d"></stop>
-                    <stop offset="1" stop-color="#b94d29"></stop>
-                  </radialGradient>
-                  <clipPath id="basketball-clip">
-                    <circle cx="24" cy="24" r="22.5"></circle>
-                  </clipPath>
-                </defs>
-                <circle cx="24" cy="24" r="22.5" fill="url(#basketball-shade)" stroke="#33180f" stroke-width="1.5"></circle>
-                <g clip-path="url(#basketball-clip)" stroke="#33180f" stroke-width="1.7" stroke-linecap="round">
-                  <path d="M7 7 41 41"></path>
-                  <path d="M41 7 7 41"></path>
-                  <path d="M19 1.5c2.7 7.2 2.4 12.6-1.2 16.3S8.7 22.2 1.5 19.5"></path>
-                  <path d="M46.5 28.5c-7.2-2.7-12.7-2.4-16.3 1.3s-4.3 9.1-1.7 16.7"></path>
-                </g>
-              </svg>
-            </div>
-          </div>
-
-          <div class="mt-auto max-w-md pt-12 sm:pt-16 lg:pt-0">
-            <h3 class="text-3xl font-black tracking-[-0.04em] sm:text-4xl">Basketball</h3>
-            <p class="mt-3 text-sm leading-6 text-orange-50/80">
-              The court replaces solitary focus with shared timing. Communication, movement, and a
-              clear next play are often more important than any single action.
-            </p>
-            <div class="mt-5 grid grid-cols-3 gap-2 border-t border-white/20 pt-4 font-mono text-[0.58rem] font-bold uppercase tracking-[0.12em] text-orange-100/70">
-              <span>Move</span><span class="text-center">Connect</span><span class="text-right">Reset</span>
-            </div>
-          </div>
+      <article class="hobby-card basketball-card relative flex h-36 min-w-0 flex-col justify-end overflow-hidden rounded-2xl border p-4 sm:h-28 sm:justify-center sm:px-5">
+        <h3 class="relative z-10 w-fit text-sm font-semibold tracking-tight text-slate-700 sm:text-base">Basketball</h3>
+        <div class="hobby-art" aria-hidden="true">
+          <svg class="court-lines h-full w-full" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="14" y="6" width="92" height="108" rx="4"></rect>
+            <path d="M14 60h92M38 6v24h44V6M38 114V90h44v24"></path>
+            <circle cx="60" cy="60" r="20"></circle>
+          </svg>
+          <svg class="basketball" viewBox="0 0 48 48" fill="none">
+            <defs>
+              <radialGradient id="basketball-shade" cx="0" cy="0" r="1" gradientTransform="translate(16 13) rotate(48) scale(42)">
+                <stop stop-color="#f59a58"></stop>
+                <stop offset="0.7" stop-color="#df743d"></stop>
+                <stop offset="1" stop-color="#b94d29"></stop>
+              </radialGradient>
+              <clipPath id="basketball-clip">
+                <circle cx="24" cy="24" r="22.5"></circle>
+              </clipPath>
+            </defs>
+            <circle cx="24" cy="24" r="22.5" fill="url(#basketball-shade)" stroke="#33180f" stroke-width="1.5"></circle>
+            <g clip-path="url(#basketball-clip)" stroke="#33180f" stroke-width="1.7" stroke-linecap="round">
+              <path d="M7 7 41 41"></path>
+              <path d="M41 7 7 41"></path>
+              <path d="M19 1.5c2.7 7.2 2.4 12.6-1.2 16.3S8.7 22.2 1.5 19.5"></path>
+              <path d="M46.5 28.5c-7.2-2.7-12.7-2.4-16.3 1.3s-4.3 9.1-1.7 16.7"></path>
+            </g>
+          </svg>
         </div>
       </article>
-    </div>
 
-    <div class="mt-3 grid gap-3 sm:grid-cols-2">
-      <div class="lesson-card flex items-center gap-3 rounded-xl border border-slate-300/70 bg-white/55 p-4 backdrop-blur-sm">
-        <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-slate-950 font-mono text-[0.65rem] font-black text-white">01</span>
-        <p class="text-xs leading-5 text-slate-600"><strong class="text-slate-950">Think globally.</strong> A local move only makes sense in the context of the whole board.</p>
-      </div>
-      <div class="lesson-card flex items-center gap-3 rounded-xl border border-slate-300/70 bg-white/55 p-4 backdrop-blur-sm">
-        <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-blue-600 font-mono text-[0.65rem] font-black text-white">02</span>
-        <p class="text-xs leading-5 text-slate-600"><strong class="text-slate-950">Act together.</strong> Good systems, like good teams, depend on coordinated parts.</p>
-      </div>
+      <article class="hobby-card music-card relative flex h-36 min-w-0 flex-col justify-end overflow-hidden rounded-2xl border p-4 sm:h-28 sm:justify-center sm:px-5">
+        <h3 class="relative z-10 w-fit text-sm font-semibold tracking-tight text-slate-700 sm:text-base">Music</h3>
+        <div class="hobby-art" aria-hidden="true">
+          <svg class="record-player" viewBox="0 0 120 120" fill="none" focusable="false">
+            <defs>
+              <linearGradient id="life-record-case" x1="8" y1="16" x2="112" y2="104" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#f1f7f3"></stop>
+                <stop offset="1" stop-color="#d5e6dc"></stop>
+              </linearGradient>
+            </defs>
+            <rect x="8" y="16" width="104" height="88" rx="12" fill="url(#life-record-case)" stroke="#adcaba" stroke-width="1.5"></rect>
+            <circle cx="49" cy="60" r="33" fill="#29363c"></circle>
+            <g stroke="#718087" stroke-opacity="0.45">
+              <circle cx="49" cy="60" r="26"></circle>
+              <circle cx="49" cy="60" r="21"></circle>
+              <circle cx="49" cy="60" r="16"></circle>
+            </g>
+            <circle cx="49" cy="60" r="10" fill="#9ccbb5"></circle>
+            <circle cx="49" cy="60" r="2" fill="#f8fafc"></circle>
+            <path d="M95 34v22a16 16 0 0 1-5 12l-9 9" stroke="#6f8b7e" stroke-width="3" stroke-linecap="round"></path>
+            <circle cx="95" cy="33" r="5" fill="#bfd5c8" stroke="#829f90" stroke-width="1.5"></circle>
+            <rect x="75" y="73" width="8" height="14" rx="2" transform="rotate(40 79 80)" fill="#526a5e"></rect>
+          </svg>
+        </div>
+      </article>
+
+      <article class="hobby-card game-card relative flex h-36 min-w-0 flex-col justify-end overflow-hidden rounded-2xl border p-4 sm:h-28 sm:justify-center sm:px-5">
+        <h3 class="relative z-10 w-fit text-sm font-semibold tracking-tight text-slate-700 sm:text-base">Game</h3>
+        <div class="hobby-art" aria-hidden="true">
+          <svg class="game-controller" viewBox="0 0 120 120" fill="none" focusable="false">
+            <defs>
+              <linearGradient id="life-controller-case" x1="25" y1="30" x2="90" y2="94" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#faf9ff"></stop>
+                <stop offset="1" stop-color="#dbd7ed"></stop>
+              </linearGradient>
+            </defs>
+            <g transform="translate(0 -6)">
+              <path d="M37 35h46c11 0 17 8 20 18l8 29c2 8-1 15-8 17-6 2-10-1-14-6L77 80H43L31 93c-4 5-8 8-14 6-7-2-10-9-8-17l8-29c3-10 9-18 20-18Z" fill="url(#life-controller-case)" stroke="#aaa3c4" stroke-width="2" stroke-linejoin="round"></path>
+              <path d="M37 41h46" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-opacity="0.8"></path>
+              <rect x="32" y="47" width="8" height="26" rx="2" fill="#736c89"></rect>
+              <rect x="23" y="56" width="26" height="8" rx="2" fill="#736c89"></rect>
+              <circle cx="84" cy="48" r="4.5" fill="#8eb9ad"></circle>
+              <circle cx="94" cy="58" r="4.5" fill="#b69fc3"></circle>
+              <circle cx="74" cy="58" r="4.5" fill="#91b5cb"></circle>
+              <circle cx="84" cy="68" r="4.5" fill="#9c91c2"></circle>
+              <path d="M54 70h3M64 70h3" stroke="#b2aac9" stroke-width="3" stroke-linecap="round"></path>
+            </g>
+          </svg>
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
 <style>
-  .life-section {
-    background:
-      radial-gradient(circle at 15% 20%, rgb(214 169 97 / 0.2), transparent 26rem),
-      linear-gradient(135deg, #f8f5ef 0%, #f1f5f9 65%, #e8eef7 100%);
+  .hobby-card {
+    transition: border-color 200ms ease;
   }
 
-  .life-noise {
-    background-image: radial-gradient(rgb(15 23 42 / 0.12) 0.55px, transparent 0.55px);
-    background-size: 6px 6px;
-    opacity: 0.16;
-    mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+  .go-card {
+    border-color: #e7dfd0;
+    background: linear-gradient(120deg, #fff, #faf7f1);
   }
 
-  .life-label {
-    width: fit-content;
-    border-width: 1px;
-    border-radius: 9999px;
-    padding: 0.35rem 0.6rem;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    font-size: 0.58rem;
-    font-weight: 800;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
+  .basketball-card {
+    border-color: #f1e0d5;
+    background: linear-gradient(120deg, #fff, #fff7f1);
+  }
+
+  .music-card {
+    border-color: #d9e6de;
+    background: linear-gradient(120deg, #fff, #f2f8f4);
+  }
+
+  .game-card {
+    border-color: #e1ddef;
+    background: linear-gradient(120deg, #fff, #f6f4fc);
+  }
+
+  .hobby-card:hover {
+    border-color: #cbd5e1;
+  }
+
+  .hobby-art {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 4.5rem;
+    height: 4.5rem;
+    pointer-events: none;
+  }
+
+  .board-wrap {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #dac39f;
+    border-radius: 0.65rem;
+    padding: 0.5rem;
+    background: linear-gradient(135deg, #f1e3cd, #e4c899);
+    box-shadow: 0 8px 16px -10px rgb(111 79 35 / 0.4);
+    transform: rotate(-8deg);
+    transition: transform 250ms ease;
   }
 
   .go-board {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgb(117 87 47 / 0.5);
     background-image:
-      linear-gradient(to right, rgb(15 23 42 / 0.48) 1px, transparent 1px),
-      linear-gradient(to bottom, rgb(15 23 42 / 0.48) 1px, transparent 1px);
-    background-size: calc(100% / 18) calc(100% / 18);
-  }
-
-  .star-point {
-    position: absolute;
-    width: 1.2%;
-    height: 1.2%;
-    border-radius: 9999px;
-    background: rgb(15 23 42 / 0.75);
-    transform: translate(-50%, -50%);
+      linear-gradient(to right, rgb(117 87 47 / 0.4) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(117 87 47 / 0.4) 1px, transparent 1px);
+    background-size: calc(100% / 8) calc(100% / 8);
   }
 
   .stone {
     position: absolute;
-    width: 4.8%;
-    height: 4.8%;
-    border-radius: 9999px;
-    box-shadow: 0 7px 10px -6px rgb(50 31 10 / 0.7);
+    width: 12.5%;
+    height: 12.5%;
+    border-radius: 50%;
+    box-shadow: 0 1px 2px rgb(50 31 10 / 0.2);
     transform: translate(-50%, -50%);
-    transition: transform 300ms ease;
   }
 
-  .go-card:hover .stone {
-    transform: translate(-50%, -50%) scale(1.06);
-  }
-
-  .stone-black,
-  .stone-last {
-    background: radial-gradient(circle at 35% 30%, #475569, #020617 70%);
+  .stone-black {
+    background: radial-gradient(circle at 35% 30%, #475569, #0f172a 75%);
   }
 
   .stone-white {
-    border: 1px solid rgb(15 23 42 / 0.15);
-    background: radial-gradient(circle at 35% 30%, #fff, #e2e8f0 75%);
+    border: 1px solid #d6d3cb;
+    background: radial-gradient(circle at 35% 30%, #fff, #edece7 75%);
   }
 
-  .stone-last::after {
-    position: absolute;
-    inset: 35%;
-    border-radius: 9999px;
-    background: #60a5fa;
-    content: "";
-  }
-
-  .play-route {
-    animation: route-flow 4s linear infinite;
+  .court-lines {
+    color: #d4a382;
+    opacity: 0.45;
   }
 
   .basketball {
-    transition: transform 500ms cubic-bezier(.2,.8,.2,1);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 64%;
+    height: 64%;
+    filter: drop-shadow(0 3px 3px rgb(120 65 32 / 0.15));
+    transform: translate(-50%, -50%) rotate(-12deg);
+    transition: transform 250ms ease;
+  }
+
+  .record-player,
+  .game-controller {
+    display: block;
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 3px 3px rgb(55 65 81 / 0.12));
+    transition: transform 250ms ease;
+  }
+
+  .record-player {
+    transform: rotate(-6deg);
+  }
+
+  .game-controller {
+    transform: rotate(8deg);
+  }
+
+  .go-card:hover .board-wrap {
+    transform: rotate(-3deg);
   }
 
   .basketball-card:hover .basketball {
-    transform: rotate(18deg) translateY(-3px);
+    transform: translate(-50%, -50%) rotate(12deg);
   }
 
-  .lesson-card {
-    transition: border-color 250ms ease, background-color 250ms ease;
+  .music-card:hover .record-player {
+    transform: rotate(-2deg);
   }
 
-  .lesson-card:hover {
-    border-color: #93c5fd;
-    background: rgb(255 255 255 / 0.8);
+  .game-card:hover .game-controller {
+    transform: rotate(3deg);
   }
 
-  @keyframes route-flow {
-    to { stroke-dashoffset: -36; }
+  @media (min-width: 640px) {
+    .hobby-art {
+      top: 50%;
+      right: 1.25rem;
+      width: 6rem;
+      height: 6rem;
+      transform: translateY(-50%);
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .stone,
-    .play-route,
+    .hobby-card,
+    .board-wrap,
     .basketball,
-    .lesson-card {
-      animation: none;
+    .record-player,
+    .game-controller {
       transition: none;
+    }
+
+    .go-card:hover .board-wrap {
+      transform: rotate(-8deg);
+    }
+
+    .basketball-card:hover .basketball {
+      transform: translate(-50%, -50%) rotate(-12deg);
+    }
+
+    .music-card:hover .record-player {
+      transform: rotate(-6deg);
+    }
+
+    .game-card:hover .game-controller {
+      transform: rotate(8deg);
     }
   }
 </style>
