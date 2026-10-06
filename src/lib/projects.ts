@@ -23,9 +23,12 @@ export const gaanet: Project = {
   description:
     "An asymmetric multi-scale fusion framework with global-guided attention for refining audio and visual features across scales.",
   status: "Accepted by ICME 2026",
-  note: "Accepted for publication. Code is open source; the publication link will be added when available.",
+  note: "Accepted for publication. Code is open source; the preprint is available on arXiv.",
   tags: ["Python", "PyTorch", "Multimodal Learning", "Deep Learning"],
-  links: [{ label: "GitHub", href: "https://github.com/redizzy/GAANet" }],
+  links: [
+    { label: "GitHub", href: "https://github.com/redizzy/GAANet" },
+    { label: "arXiv", href: "https://arxiv.org/abs/2610.02752" },
+  ],
   image: {
     src: "/proj1_img.webp",
     alt: "GAANet audio-visual fusion architecture showing audio and video multi-scale feature flows",

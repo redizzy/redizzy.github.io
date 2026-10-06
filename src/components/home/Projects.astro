@@ -8,6 +8,7 @@ interface Props {
 }
 
 const { group, index } = Astro.props;
+const isResearch = group.id === "research";
 
 const reservedProjects = [
   {
@@ -20,7 +21,7 @@ const reservedProjects = [
 ].filter((project) => project.group === group.id);
 ---
 
-<section id={group.id} class:list={["projects-section relative overflow-hidden", group.id === "research" ? "bg-white" : "border-y border-slate-200 bg-slate-50"]} aria-labelledby={`${group.id}-heading`}>
+<section id={group.id} class:list={["projects-section relative overflow-hidden", isResearch ? "bg-white" : "border-y border-slate-200 bg-slate-50"]} aria-labelledby={`${group.id}-heading`}>
   <div class="project-glow pointer-events-none absolute right-[-12rem] top-16 h-[32rem] w-[32rem] rounded-full bg-blue-100/70 blur-3xl" aria-hidden="true"></div>
 
   <div class="relative mx-auto max-w-7xl px-6 py-24 sm:px-8 sm:py-28 lg:py-32">
@@ -29,7 +30,7 @@ const reservedProjects = [
         <div class="mb-4 flex items-center gap-3 font-mono text-[0.65rem] font-bold uppercase tracking-[0.24em] text-blue-600">
           <span>{index}</span>
           <span class="h-px w-10 bg-blue-600"></span>
-          {group.id === "research" ? "Machine learning & experiments" : "Applications & engineering"}
+          {isResearch ? "Machine learning & experiments" : "Applications & engineering"}
         </div>
         <h2 id={`${group.id}-heading`} class="max-w-4xl text-4xl font-black leading-[0.98] tracking-[-0.045em] text-slate-950 sm:text-5xl lg:text-6xl">
           {group.title}.
@@ -71,18 +72,18 @@ const reservedProjects = [
                 {project.tags.map((tag) => <span class="tech-tag">{tag}</span>)}
               </div>
 
-              <footer class:list={["mt-8 border-t border-slate-200 pt-6", project.links.length > 1 && "flex flex-col items-start gap-2"]}>
-                <p class:list={["text-sm leading-6 text-slate-600", project.links.length === 1 && "[text-wrap:pretty]"]}>
+              <footer class:list={["mt-8 border-t border-slate-200 pt-6", !isResearch && project.links.length > 1 && "flex flex-col items-start gap-2"]}>
+                <p class:list={["text-sm leading-6 text-slate-600", (isResearch || project.links.length === 1) && "[text-wrap:pretty]"]}>
                   {project.note}
-                  {project.links.length === 1 && (
-                    <span class="ml-2 inline-flex items-center gap-2 align-middle">
+                  {(isResearch || project.links.length === 1) && (
+                    <span class="ml-2 inline-flex flex-wrap items-center gap-2 align-middle">
                       {project.links.map((link) => (
                         <ProjectLink link={link} projectName={project.name} compact />
                       ))}
                     </span>
                   )}
                 </p>
-                {project.links.length > 1 && (
+                {!isResearch && project.links.length > 1 && (
                   <div class="flex flex-wrap items-center gap-2">
                     {project.links.map((link) => (
                       <ProjectLink link={link} projectName={project.name} compact />
