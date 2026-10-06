@@ -48,6 +48,7 @@ This website is used to present my background, projects, and technical interests
 ## Updating Content
 
 - Edit `src/lib/projects.ts` to update the separate Research and Software groups shared by the homepage, project archive, and CV. Keep publication status and App Store availability accurate.
+- Luko's `public/luko-icon.jpg` is the 512px artwork from [its App Store listing](https://apps.apple.com/nl/app/luko-fitness-food-buddy/id6788284565); `public/luko-favicon.png` comes from [the official website favicon](https://lukoapp.com/assets/luko-icon.png).
 - Edit `src/pages/projects.astro` to manage the Software and Agent demo slots.
 - Edit `src/config.ts` for the default page title and description.
 - The default sharing image is `public/social-card.png`. After editing its source, `public/social-card.svg`, regenerate the PNG with:

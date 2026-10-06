@@ -94,6 +94,33 @@ const bling: Project = {
   ],
 };
 
+const luko: Project = {
+  id: "luko",
+  name: "Luko",
+  title: "Luko",
+  icon: "/luko-icon.jpg",
+  category: "Software Engineering",
+  subtitle: "AI-assisted food & fitness companion for iOS",
+  description:
+    "A playful food and fitness companion combining photo, voice, and text meal logging, personalized workouts, and collectible animal companions.",
+  status: "Released",
+  note: "Contributed to development. Available on the App Store for iPhone and iPad.",
+  tags: ["iOS App", "AI-assisted Wellness", "Gamified Habits"],
+  links: [
+    {
+      label: "App Store",
+      href: "https://apps.apple.com/nl/app/luko-fitness-food-buddy/id6788284565",
+    },
+    { label: "Website", href: "https://lukoapp.com/", icon: "/luko-favicon.png" },
+  ],
+  features: [
+    "Photo, voice, and text meal logging",
+    "Editable calorie and macro estimates",
+    "Personalized daily workout plans",
+    "Collectible companions and sticker maps",
+  ],
+};
+
 export const projectGroups = [
   {
     id: "research",
@@ -107,6 +134,6 @@ export const projectGroups = [
     title: "Software",
     archiveId: "software",
     description: "I build software to explore ideas and solve practical problems, with care for both design and engineering.",
-    projects: [wholo, bling],
+    projects: [wholo, bling, luko],
   },
 ];
