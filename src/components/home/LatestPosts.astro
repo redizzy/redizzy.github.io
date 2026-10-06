@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import createSlug from "../../lib/createSlug";
+import formatDate from "../../lib/formatDate";
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -8,19 +9,12 @@ const posts = (await getCollection("blog")).sort(
 const latestPosts = posts.slice(0, 3);
 const [featuredPost, ...secondaryPosts] = latestPosts;
 
-const formatDate = (date: Date) =>
-  new Intl.DateTimeFormat("en", {
-    year: "numeric",
-    month: "short",
-    day: "2-digit",
-  }).format(date);
-
 const postUrl = (post: (typeof posts)[number]) =>
   `/blog/${createSlug(post.data.title, post.slug)}`;
 ---
 
-<section id="blog" class="blog-section relative overflow-hidden bg-white">
-  <div class="blog-rule pointer-events-none absolute inset-y-0 left-1/2 hidden w-px bg-slate-100 lg:block" aria-hidden="true"></div>
+<section id="blog" class="relative overflow-hidden bg-white">
+  <div class="pointer-events-none absolute inset-y-0 left-1/2 hidden w-px bg-slate-100 lg:block" aria-hidden="true"></div>
 
   <div class="relative mx-auto max-w-7xl px-6 py-24 sm:px-8 sm:py-28 lg:py-32">
     <div class="mb-12 grid items-end gap-6 lg:grid-cols-[1fr_0.62fr] lg:gap-16">

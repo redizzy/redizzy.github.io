@@ -12,7 +12,7 @@ The site is built with **Astro** and **Tailwind CSS**, and is automatically depl
 
 - Astro
 - Tailwind CSS
-- Markdown / MDX
+- Markdown
 - GitHub Actions (CI/CD)
 - GitHub Pages
 
@@ -34,7 +34,7 @@ npm run dev
 - `src/layouts/SiteLayout.astro`: shared page layout with the top navigation and footer.
 - `src/layouts/PostLayout.astro`: blog article layout built on the shared layout.
 - `src/components/home/`: homepage sections and navigation.
-- `src/lib/`: shared project and book data, plus URL helpers.
+- `src/lib/`: shared project and book data, plus URL and date formatting helpers.
 - `src/content/blog/`: blog posts and their metadata.
 
 ## 📦 Deployment
@@ -48,7 +48,7 @@ This website is used to present my background, projects, and technical interests
 ## Updating Content
 
 - Edit `src/lib/projects.ts` to update the separate Research and Software groups shared by the homepage, project archive, and CV. Keep publication status and App Store availability accurate.
-- Demo slots remain in `src/components/home/Projects.astro` and `src/pages/projects.astro` for future work.
+- Edit `src/pages/projects.astro` to manage the Software and Agent demo slots.
 - Edit `src/config.ts` for the default page title and description.
 - The default sharing image is `public/social-card.png`. After editing its source, `public/social-card.svg`, regenerate the PNG with:
 

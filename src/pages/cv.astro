@@ -14,7 +14,6 @@ const skills = ["Python", "C", "C++", "R", "SQL", "Linux", "Git", "Matlab", "LaT
 <SiteLayout
   title="CV | Zhang Zhiyuan (Dizzy)"
   description="Zhang Zhiyuan's education, machine learning research, software projects, work experience, awards, and technical skills."
-  bodyClass="content-page"
 >
   <div class="mx-auto w-full max-w-7xl px-6 pb-24 pt-32 sm:px-8 sm:pb-28 sm:pt-36">
     <header class="grid gap-8 border-b border-slate-200 pb-12 sm:pb-16 lg:grid-cols-[1fr_auto] lg:items-end">
@@ -34,7 +33,7 @@ const skills = ["Python", "C", "C++", "R", "SQL", "Linux", "Git", "Matlab", "LaT
     </header>
 
     <div class="divide-y divide-slate-200">
-      <section class="cv-section grid gap-7 py-12 sm:py-14 lg:grid-cols-[14rem_1fr] lg:gap-16">
+      <section class="grid gap-7 py-12 sm:py-14 lg:grid-cols-[14rem_1fr] lg:gap-16">
         <header>
           <span class="cv-index">01 / Profile</span>
           <h2 class="cv-heading">About</h2>
@@ -47,12 +46,12 @@ const skills = ["Python", "C", "C++", "R", "SQL", "Linux", "Git", "Matlab", "LaT
         </p>
       </section>
 
-      <section class="cv-section grid gap-7 py-12 sm:py-14 lg:grid-cols-[14rem_1fr] lg:gap-16">
+      <section class="grid gap-7 py-12 sm:py-14 lg:grid-cols-[14rem_1fr] lg:gap-16">
         <header>
           <span class="cv-index">02 / Education</span>
           <h2 class="cv-heading">Study</h2>
         </header>
-        <article class="record-row border-l-2 border-blue-500 pl-6 sm:pl-8">
+        <article class="border-l-2 border-blue-500 pl-6 sm:pl-8">
           <div class="record-period">Sep 2023 - Present</div>
           <h3 class="record-title">Bachelor of Science in Information and Computing Science</h3>
           <p class="record-meta">Hefei University of Technology / School of Mathematics / Hefei, China</p>
@@ -60,14 +59,14 @@ const skills = ["Python", "C", "C++", "R", "SQL", "Linux", "Git", "Matlab", "LaT
       </section>
 
       {projectGroups.map((group, index) => (
-        <section class="cv-section grid gap-7 py-12 sm:py-14 lg:grid-cols-[14rem_1fr] lg:gap-16" aria-labelledby={`cv-${group.id}`}>
+        <section class="grid gap-7 py-12 sm:py-14 lg:grid-cols-[14rem_1fr] lg:gap-16" aria-labelledby={`cv-${group.id}`}>
           <header>
             <span class="cv-index">{(index + 3).toString().padStart(2, "0")} / {group.title}</span>
             <h2 id={`cv-${group.id}`} class="cv-heading">{group.title}</h2>
           </header>
           <div class="space-y-10">
             {group.projects.map((project) => (
-              <article class="record-row border-l-2 border-blue-500 pl-6 sm:pl-8">
+              <article class="border-l-2 border-blue-500 pl-6 sm:pl-8">
                 <div class="record-period">{project.status}</div>
                 <h3 class="record-title">{project.name}</h3>
                 <p class="record-meta">{project.subtitle}</p>
@@ -89,12 +88,12 @@ const skills = ["Python", "C", "C++", "R", "SQL", "Linux", "Git", "Matlab", "LaT
         </section>
       ))}
 
-      <section class="cv-section grid gap-7 py-12 sm:py-14 lg:grid-cols-[14rem_1fr] lg:gap-16">
+      <section class="grid gap-7 py-12 sm:py-14 lg:grid-cols-[14rem_1fr] lg:gap-16">
         <header>
           <span class="cv-index">05 / Experience</span>
           <h2 class="cv-heading">Work</h2>
         </header>
-        <article class="record-row border-l-2 border-blue-500 pl-6 sm:pl-8">
+        <article class="border-l-2 border-blue-500 pl-6 sm:pl-8">
           <div class="record-period">Dec 2024 - Jun 2025</div>
           <h3 class="record-title">Quantitative Trading Consultant</h3>
           <p class="record-meta">WorldQuant / Remote</p>
@@ -105,7 +104,7 @@ const skills = ["Python", "C", "C++", "R", "SQL", "Linux", "Git", "Matlab", "LaT
         </article>
       </section>
 
-      <section class="cv-section grid gap-7 py-12 sm:py-14 lg:grid-cols-[14rem_1fr] lg:gap-16">
+      <section class="grid gap-7 py-12 sm:py-14 lg:grid-cols-[14rem_1fr] lg:gap-16">
         <header>
           <span class="cv-index">06 / Awards</span>
           <h2 class="cv-heading">Recognition</h2>
@@ -120,7 +119,7 @@ const skills = ["Python", "C", "C++", "R", "SQL", "Linux", "Git", "Matlab", "LaT
         </ol>
       </section>
 
-      <section class="cv-section grid gap-7 py-12 sm:py-14 lg:grid-cols-[14rem_1fr] lg:gap-16">
+      <section class="grid gap-7 py-12 sm:py-14 lg:grid-cols-[14rem_1fr] lg:gap-16">
         <header>
           <span class="cv-index">07 / Tests</span>
           <h2 class="cv-heading">Test Scores</h2>
@@ -131,7 +130,7 @@ const skills = ["Python", "C", "C++", "R", "SQL", "Linux", "Git", "Matlab", "LaT
         </div>
       </section>
 
-      <section class="cv-section grid gap-7 py-12 sm:py-14 lg:grid-cols-[14rem_1fr] lg:gap-16">
+      <section class="grid gap-7 py-12 sm:py-14 lg:grid-cols-[14rem_1fr] lg:gap-16">
         <header>
           <span class="cv-index">08 / Skills</span>
           <h2 class="cv-heading">Toolkit</h2>

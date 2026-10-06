@@ -9,9 +9,9 @@ const categories = [
     title: group.title,
     description: group.description,
     projects: group.projects,
-    reserved: group.id === "research"
-      ? ["Demo Academic Project 02", "Demo Academic Project 03"]
-      : ["Demo Software Project 01", "Demo Software Project 02", "Demo Software Project 03"],
+    reserved: group.id === "software"
+      ? ["Demo Software Project 01", "Demo Software Project 02", "Demo Software Project 03"]
+      : [],
   })),
   {
     id: "agents",
@@ -29,7 +29,6 @@ const reservedCount = categories.reduce((total, category) => total + category.re
 <SiteLayout
   title="Research & Software | Zhang Zhiyuan (Dizzy)"
   description="Machine learning research and software projects by Zhang Zhiyuan, including GAANet, WHOLO for iOS, and Bling for iOS and Android."
-  bodyClass="content-page"
 >
   <div class="mx-auto w-full max-w-7xl px-6 pb-24 pt-32 sm:px-8 sm:pb-28 sm:pt-36">
     <header class="max-w-4xl border-b border-slate-200 pb-12 sm:pb-16">
@@ -60,7 +59,8 @@ const reservedCount = categories.reduce((total, category) => total + category.re
               <div class="flex items-center gap-3">
                 <span class="font-mono text-[0.62rem] font-black text-blue-600">0{categoryIndex + 1}</span>
                 <span class="font-mono text-[0.58rem] font-bold uppercase tracking-[0.16em] text-slate-400">
-                  {projects.length.toString().padStart(2, "0")} featured / {reserved.length.toString().padStart(2, "0")} reserved
+                  {projects.length.toString().padStart(2, "0")} featured
+                  {reserved.length > 0 && ` / ${reserved.length.toString().padStart(2, "0")} reserved`}
                 </span>
               </div>
               <h2 class="mt-3 text-2xl font-extrabold tracking-[-0.03em] text-slate-950">{title}</h2>
@@ -111,7 +111,7 @@ const reservedCount = categories.reduce((total, category) => total + category.re
                         </div>
                         <div class="mt-5 flex flex-wrap items-center gap-2">
                           {project.links.map((link) => (
-                            <ProjectLink link={link} projectName={project.name} compact />
+                            <ProjectLink link={link} projectName={project.name} />
                           ))}
                         </div>
                       </div>
@@ -121,7 +121,7 @@ const reservedCount = categories.reduce((total, category) => total + category.re
               )}
 
               {reserved.map((projectTitle, reservedIndex) => (
-                <article class="reserved-row group grid min-h-36 items-center gap-5 py-7 sm:grid-cols-[3.5rem_1fr_auto] sm:gap-7 sm:py-8">
+                <article class="reserved-row grid min-h-36 items-center gap-5 py-7 sm:grid-cols-[3.5rem_1fr_auto] sm:gap-7 sm:py-8">
                   <div class="blueprint-index grid h-12 w-12 place-items-center rounded-xl border border-dashed border-slate-300 bg-slate-50 font-mono text-[0.65rem] font-black text-slate-300 transition">
                     {(projects.length + reservedIndex + 1).toString().padStart(2, "0")}
                   </div>

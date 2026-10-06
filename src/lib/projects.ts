@@ -8,7 +8,7 @@ export interface Project {
   status: string;
   note: string;
   tags: string[];
-  links: { label: string; href: string }[];
+  links: { label: string; href: string; icon?: string }[];
   icon?: string;
   image?: { src: string; alt: string; width: number; height: number };
   features?: string[];
@@ -63,7 +63,7 @@ export const wholo: Project = {
   ],
 };
 
-export const bling: Project = {
+const bling: Project = {
   id: "bling",
   name: "Bling",
   title: "Bling",
@@ -84,7 +84,7 @@ export const bling: Project = {
       label: "Google Play",
       href: "https://play.google.com/store/apps/details?id=com.bling.android",
     },
-    { label: "Website", href: "https://www.bling.best/" },
+    { label: "Website", href: "https://www.bling.best/", icon: "/bling-favicon.svg" },
   ],
   features: [
     "Photo-based calorie and macro estimates",

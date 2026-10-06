@@ -9,20 +9,10 @@ interface Props {
 
 const { group, index } = Astro.props;
 const isResearch = group.id === "research";
-
-const reservedProjects = [
-  {
-    group: "research",
-    title: "Demo Project 02",
-    eyebrow: "Next build",
-    desc: "Reserved for a future research project, with its methods, experiments, and code.",
-    variant: "blueprint-a",
-  },
-].filter((project) => project.group === group.id);
 ---
 
-<section id={group.id} class:list={["projects-section relative overflow-hidden", isResearch ? "bg-white" : "border-y border-slate-200 bg-slate-50"]} aria-labelledby={`${group.id}-heading`}>
-  <div class="project-glow pointer-events-none absolute right-[-12rem] top-16 h-[32rem] w-[32rem] rounded-full bg-blue-100/70 blur-3xl" aria-hidden="true"></div>
+<section id={group.id} class:list={["relative overflow-hidden", isResearch ? "bg-white" : "border-y border-slate-200 bg-slate-50"]} aria-labelledby={`${group.id}-heading`}>
+  <div class="pointer-events-none absolute right-[-12rem] top-16 h-[32rem] w-[32rem] rounded-full bg-blue-100/70 blur-3xl" aria-hidden="true"></div>
 
   <div class="relative mx-auto max-w-7xl px-6 py-24 sm:px-8 sm:py-28 lg:py-32">
     <div class="mb-12 grid items-end gap-6 lg:grid-cols-[1fr_0.65fr] lg:gap-16">
@@ -41,9 +31,9 @@ const reservedProjects = [
       </p>
     </div>
 
-    <div class="project-index grid gap-5">
+    <div class="grid gap-5">
       {group.projects.map((project) => (
-        <article class="featured-project min-w-0 overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_35px_100px_-55px_rgba(15,23,42,0.4)]">
+        <article class="min-w-0 overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_35px_100px_-55px_rgba(15,23,42,0.4)]">
           <header class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 px-6 py-4 sm:px-8">
             <span class="font-mono text-xs font-bold uppercase tracking-[0.12em] text-slate-600">{project.category}</span>
             <span class="rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-bold text-blue-700">{project.status}</span>
@@ -78,7 +68,7 @@ const reservedProjects = [
                   {(isResearch || project.links.length === 1) && (
                     <span class="ml-2 inline-flex flex-wrap items-center gap-2 align-middle">
                       {project.links.map((link) => (
-                        <ProjectLink link={link} projectName={project.name} compact />
+                        <ProjectLink link={link} projectName={project.name} />
                       ))}
                     </span>
                   )}
@@ -86,7 +76,7 @@ const reservedProjects = [
                 {!isResearch && project.links.length > 1 && (
                   <div class="flex flex-wrap items-center gap-2">
                     {project.links.map((link) => (
-                      <ProjectLink link={link} projectName={project.name} compact />
+                      <ProjectLink link={link} projectName={project.name} />
                     ))}
                   </div>
                 )}
@@ -121,33 +111,6 @@ const reservedProjects = [
       ))}
     </div>
 
-    {reservedProjects.length > 0 && (
-      <div class:list={["mt-5 grid gap-4", reservedProjects.length > 1 && "md:grid-cols-2"]}>
-        {
-          reservedProjects.map(({ title, eyebrow, desc, variant }) => (
-            <article class:list={["reserved-project group relative overflow-hidden rounded-[2rem] border border-dashed border-slate-300 bg-slate-50 p-6 sm:p-7", variant]}>
-              <div class="blueprint-grid pointer-events-none absolute inset-0" aria-hidden="true"></div>
-              <div class="blueprint-shape pointer-events-none absolute right-5 top-5 h-20 w-20" aria-hidden="true">
-                <span class="absolute inset-0 rounded-full border border-blue-300/60"></span>
-                <span class="absolute inset-[24%] rotate-45 border border-slate-300"></span>
-                <span class="absolute left-1/2 top-0 h-full w-px bg-slate-200"></span>
-                <span class="absolute left-0 top-1/2 h-px w-full bg-slate-200"></span>
-              </div>
-
-              <div class="relative flex h-full flex-col">
-                <span class="w-fit rounded-full border border-slate-300 bg-white/80 px-2.5 py-1 font-mono text-[0.55rem] font-bold uppercase tracking-[0.14em] text-slate-500">Reserved</span>
-                <div class="mt-auto pt-8">
-                  <span class="font-mono text-[0.56rem] font-bold uppercase tracking-[0.17em] text-blue-600">{eyebrow}</span>
-                  <h3 class="mt-2 text-xl font-extrabold tracking-tight text-slate-800">{title}</h3>
-                  <p class="mt-2 text-xs leading-5 text-slate-500 sm:text-sm sm:leading-6">{desc}</p>
-                </div>
-              </div>
-            </article>
-          ))
-        }
-      </div>
-    )}
-
     <div class="mt-8 flex justify-end border-t border-slate-200 pt-7">
       <a href={`/projects#${group.archiveId}`} class="group inline-flex items-center gap-2 text-sm font-extrabold text-slate-800 transition hover:text-blue-600">
         View {group.title.toLowerCase()} projects
@@ -158,15 +121,6 @@ const reservedProjects = [
 </section>
 
 <style>
-  .blueprint-grid {
-    background-image:
-      linear-gradient(rgb(71 85 105 / 0.07) 1px, transparent 1px),
-      linear-gradient(90deg, rgb(71 85 105 / 0.07) 1px, transparent 1px);
-    background-size: 24px 24px;
-    opacity: 0.42;
-    mask-image: linear-gradient(135deg, black, transparent 72%);
-  }
-
   .tech-tag {
     border: 1px solid #cbd5e1;
     border-radius: 9999px;
@@ -177,35 +131,5 @@ const reservedProjects = [
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.03em;
-  }
-
-  .reserved-project {
-    transition: border-color 250ms ease, background-color 250ms ease, transform 250ms ease;
-  }
-
-  .reserved-project:hover {
-    border-color: #93c5fd;
-    background: #f8fbff;
-    transform: translateX(-3px);
-  }
-
-  .blueprint-shape {
-    transition: opacity 250ms ease, transform 400ms ease;
-  }
-
-  .reserved-project:hover .blueprint-shape {
-    opacity: 0.85;
-    transform: rotate(8deg);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .reserved-project,
-    .blueprint-shape {
-      transition: none;
-    }
-
-    .reserved-project:hover {
-      transform: none;
-    }
   }
 </style>

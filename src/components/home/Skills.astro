@@ -1,13 +1,11 @@
 ---
-import { wholo } from "../../lib/projects";
-
-const mathTopics = ["Analysis", "Linear algebra", "Probability"];
-const aiTopics = ["Python", "PyTorch", "Deep learning"];
-const codingTopics = ["Python", "C++", "Git", "Web", "Tooling"];
-const web3Topics = ["Blockchain", "Ethereum"];
+const mathTopics = ["Analysis", "Linear algebra", "Probability", "R", "MATLAB"];
+const aiTopics = ["Python", "PyTorch", "Deep learning", "C++"];
+const codingTopics = ["Python", "C++", "Git", "Linux", "TypeScript", "JavaScript", "SQL"];
+const web3Topics = ["Blockchain", "Ethereum", "Solidity"];
 ---
 
-<section id="skills" class="skills-section relative overflow-hidden bg-slate-50">
+<section id="skills" class="relative overflow-hidden bg-slate-50">
   <div class="skills-grid pointer-events-none absolute inset-0" aria-hidden="true"></div>
 
   <div class="relative mx-auto max-w-7xl px-6 py-24 sm:px-8 sm:py-28 lg:py-32">
@@ -28,8 +26,8 @@ const web3Topics = ["Blockchain", "Ethereum"];
       </p>
     </div>
 
-    <div class="bento-grid grid gap-4 lg:grid-cols-12">
-      <article class="skill-card math-card group relative overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-100 p-7 text-slate-950 sm:p-9 lg:col-span-7">
+    <div class="grid gap-4 lg:grid-cols-12">
+      <article class="skill-card math-card relative overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-100 p-6 text-slate-950 sm:p-7 lg:col-span-7">
         <div class="math-field pointer-events-none absolute inset-0 opacity-70" aria-hidden="true">
           <span class="absolute right-[8%] top-[9%] font-serif text-5xl italic text-slate-400/20 sm:text-7xl">∫</span>
           <span class="absolute right-[24%] top-[42%] font-serif text-3xl italic text-blue-500/20 sm:text-5xl">Σ</span>
@@ -40,25 +38,20 @@ const web3Topics = ["Blockchain", "Ethereum"];
           </svg>
         </div>
 
-        <div class="relative flex h-full flex-col">
-          <div class="flex items-start justify-between gap-4">
-            <div class="grid h-11 w-11 place-items-center rounded-xl border border-slate-200 bg-white font-serif text-xl italic text-blue-600">f(x)</div>
-            <span class="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-slate-500">Core foundation</span>
-          </div>
-          <div class="mt-auto max-w-md pt-12">
-            <h3 class="text-2xl font-extrabold tracking-tight sm:text-3xl">Mathematics & Statistics</h3>
-            <p class="mt-3 text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
-              Training in rigorous thinking, abstraction, and probability gives me the language to
-              understand models rather than only operate them.
-            </p>
-            <div class="mt-5 flex flex-wrap gap-2">
-              {mathTopics.map((topic) => <span class="topic-dark">{topic}</span>)}
-            </div>
+        <div class="relative max-w-md">
+          <p class="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-slate-500">Core foundation</p>
+          <h3 class="mt-3 text-2xl font-extrabold tracking-tight sm:text-3xl">Mathematics & Statistics</h3>
+          <p class="mt-3 text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
+            Training in rigorous thinking, abstraction, and probability gives me the language to
+            understand models rather than only operate them.
+          </p>
+          <div class="mt-5 flex flex-wrap gap-2">
+            {mathTopics.map((topic) => <span class="topic-dark">{topic}</span>)}
           </div>
         </div>
       </article>
 
-      <article class="skill-card ai-card group relative overflow-hidden rounded-[2rem] border border-slate-200 bg-[#f3f6fa] p-7 sm:p-9 lg:col-span-5">
+      <article class="skill-card ai-card relative overflow-hidden rounded-[2rem] border border-slate-200 bg-[#f3f6fa] p-6 sm:p-7 lg:col-span-5">
         <svg class="network pointer-events-none absolute right-[-8%] top-[-3%] h-56 w-72 opacity-70" viewBox="0 0 300 220" fill="none" aria-hidden="true">
           <g stroke="#2563eb" stroke-opacity="0.22">
             <path d="M30 52L112 31L171 90L266 43"></path>
@@ -73,76 +66,54 @@ const web3Topics = ["Blockchain", "Ethereum"];
           </g>
         </svg>
 
-        <div class="relative flex h-full flex-col">
-          <div class="flex items-start justify-between gap-4">
-            <div class="grid h-11 w-11 place-items-center rounded-xl border border-blue-200 bg-blue-100 font-mono text-xs font-black text-blue-700">AI</div>
-            <span class="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-blue-500">Active focus</span>
-          </div>
-          <div class="mt-auto max-w-sm pt-12">
-            <h3 class="text-2xl font-extrabold tracking-tight text-slate-950 sm:text-3xl">Machine Learning</h3>
-            <p class="mt-3 text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
-              Learning to turn theory and data into models, with a growing focus on deep learning
-              and multimodal intelligence.
-            </p>
-            <div class="mt-5 flex flex-wrap gap-2">
-              {aiTopics.map((topic) => <span class="topic-light">{topic}</span>)}
-            </div>
+        <div class="relative max-w-sm">
+          <p class="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-blue-500">Active focus</p>
+          <h3 class="mt-3 text-2xl font-extrabold tracking-tight text-slate-950 sm:text-3xl">Machine Learning</h3>
+          <p class="mt-3 text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
+            Learning to turn theory and data into models, with a growing focus on deep learning
+            and multimodal intelligence.
+          </p>
+          <div class="mt-5 flex flex-wrap gap-2">
+            {aiTopics.map((topic) => <span class="topic-light">{topic}</span>)}
           </div>
         </div>
       </article>
 
-      <article class="skill-card code-card group relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-7 sm:p-8 lg:col-span-5">
-        <div class="flex h-full min-w-0 flex-col gap-6">
-          <div class="flex-1">
-            <div class="mb-6 flex items-center gap-2 font-mono text-[0.65rem] font-bold uppercase tracking-[0.18em] text-slate-400">
-              <span class="h-2 w-2 rounded-full bg-blue-600"></span>
-              Build layer
-            </div>
-            <h3 class="text-2xl font-extrabold tracking-tight text-slate-950">Software Engineering</h3>
-            <p class="mt-2 max-w-sm text-sm leading-6 text-slate-600">
-              Programming for research, automation, and usable software, with experience in
-              Python backtesting and web tools.
-            </p>
-            <div class="mt-4 flex flex-wrap gap-2">
-              {codingTopics.map((topic) => <span class="topic-light">{topic}</span>)}
-            </div>
-          </div>
+      <article class="skill-card code-card relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white px-6 py-5 lg:col-span-6">
+        <div class="mb-2 flex items-center gap-2 font-mono text-[0.6rem] font-bold uppercase tracking-[0.18em] text-slate-400">
+          <span class="h-2 w-2 rounded-full bg-blue-600"></span>
+          Build layer
+        </div>
+        <h3 class="text-2xl font-extrabold tracking-tight text-slate-950">Software Engineering</h3>
+        <p class="mt-2 text-sm leading-5 text-slate-600">
+          Programming for research, automation, and usable software, with experience in
+          Python backtesting and web tools.
+        </p>
+        <div class="mt-3 flex flex-wrap gap-1.5 xl:gap-2">
+          {codingTopics.map((topic) => <span class="topic-light">{topic}</span>)}
+        </div>
+      </article>
 
-          <div class="terminal rounded-2xl border border-slate-200 bg-slate-50 p-4 font-mono text-[0.65rem] leading-6 text-slate-500">
-            <div class="flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
-              <span class="font-bold text-slate-900">{wholo.name}</span>
-              <span class="text-blue-600">{wholo.status}</span>
-            </div>
-            <p class="mt-2">{wholo.note}</p>
-            <a href="/projects#software" class="mt-3 inline-flex items-center gap-2 font-bold text-blue-600 transition hover:text-blue-800">
-              Explore software projects <span aria-hidden="true">-&gt;</span>
-            </a>
+      <article class="skill-card web3-card relative overflow-hidden rounded-[2rem] border border-blue-100 bg-blue-50 px-6 py-5 text-slate-950 lg:col-span-3">
+        <div class="pointer-events-none absolute -right-4 -top-4 font-mono text-[7rem] font-black leading-none text-blue-600/[0.07]" aria-hidden="true">#</div>
+        <div class="relative">
+          <p class="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-blue-500">Exploratory interest</p>
+          <h3 class="mt-2 text-2xl font-extrabold tracking-tight">Web3</h3>
+          <p class="mt-2 text-sm leading-5 text-slate-600">
+            Exploring decentralized systems and the ideas behind programmable ownership.
+          </p>
+          <div class="mt-3 flex flex-wrap gap-2">
+            {web3Topics.map((topic) => <span class="topic-blue">{topic}</span>)}
           </div>
         </div>
       </article>
 
-      <article class="skill-card web3-card group relative overflow-hidden rounded-[2rem] border border-blue-100 bg-blue-50 p-7 text-slate-950 sm:p-8 lg:col-span-3">
-        <div class="chain-mark pointer-events-none absolute -right-4 -top-4 font-mono text-[7rem] font-black leading-none text-blue-600/[0.07]" aria-hidden="true">#</div>
-        <div class="relative flex h-full flex-col">
-          <span class="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-blue-500">Exploratory interest</span>
-          <div class="mt-auto pt-12">
-            <h3 class="text-2xl font-extrabold tracking-tight">Web3</h3>
-            <p class="mt-2 text-sm leading-6 text-slate-600">
-              Exploring decentralized systems and the ideas behind programmable ownership.
-            </p>
-            <div class="mt-4 flex flex-wrap gap-2">
-              {web3Topics.map((topic) => <span class="topic-blue">{topic}</span>)}
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="skill-card path-card relative overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-100 p-7 sm:p-8 lg:col-span-4">
-        <div class="flex items-center justify-between">
+      <article class="skill-card path-card relative overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-100 px-6 py-5 lg:col-span-3">
+        <div class="flex items-center justify-between gap-3">
           <span class="font-mono text-[0.6rem] font-bold uppercase tracking-[0.22em] text-slate-400">Connected interests</span>
-          <span class="status-dot relative h-2 w-2 rounded-full bg-blue-600" aria-hidden="true"></span>
+          <span class="status-dot relative h-2 w-2 shrink-0 rounded-full bg-blue-600" aria-hidden="true"></span>
         </div>
-        <div class="mt-8 space-y-1">
+        <div class="mt-2 space-y-1">
           <div class="path-step text-slate-400"><span>01</span><strong>Mathematical foundation</strong></div>
           <div class="path-line"></div>
           <div class="path-step text-slate-500"><span>02</span><strong>Machine learning</strong></div>
@@ -165,7 +136,6 @@ const web3Topics = ["Blockchain", "Ethereum"];
 
   .skill-card {
     min-width: 0;
-    min-height: 17rem;
     overflow-wrap: anywhere;
     transition: transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
   }
@@ -184,8 +154,7 @@ const web3Topics = ["Blockchain", "Ethereum"];
   }
 
   .math-field,
-  .network,
-  .terminal {
+  .network {
     transition: transform 500ms ease;
   }
 
@@ -195,10 +164,6 @@ const web3Topics = ["Blockchain", "Ethereum"];
 
   .ai-card:hover .network {
     transform: translate(-6px, 6px);
-  }
-
-  .code-card:hover .terminal {
-    transform: translateY(-3px);
   }
 
   .topic-dark,
@@ -230,15 +195,22 @@ const web3Topics = ["Blockchain", "Ethereum"];
     color: #475569;
   }
 
+  .code-card .topic-light {
+    padding-inline: 0.5rem;
+    white-space: nowrap;
+  }
+
   .path-step {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.75rem;
   }
 
   .path-step span {
+    flex-shrink: 0;
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     font-size: 0.6rem;
+    white-space: nowrap;
   }
 
   .path-step strong {
@@ -247,7 +219,7 @@ const web3Topics = ["Blockchain", "Ethereum"];
 
   .path-line {
     width: 1px;
-    height: 1.2rem;
+    height: 0.5rem;
     margin-left: 0.45rem;
     background: #cbd5e1;
   }
@@ -270,7 +242,6 @@ const web3Topics = ["Blockchain", "Ethereum"];
     .skill-card,
     .math-field,
     .network,
-    .terminal,
     .status-dot::after {
       animation: none;
       transition: none;

@@ -11,7 +11,6 @@ const {
   title = SITE_TITLE,
   description = SITE_DESCRIPTION,
   ogType,
-  bodyClass,
 } = Astro.props;
 ---
 
@@ -21,7 +20,7 @@ const {
     <BaseHead title={title} description={description} image={image} ogType={ogType} />
     {TRANSITION_API && <ViewTransitions />}
   </head>
-  <body class:list={["home-page", bodyClass]}>
+  <body class="home-page">
     <TopNav />
     <main class="home-main">
       <slot />
