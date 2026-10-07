@@ -1,0 +1,51 @@
+---
+import { education, workExperience } from "../../lib/experience";
+
+const groups = [
+  { id: "education", title: "Education", entries: education },
+  { id: "work", title: "Work", entries: workExperience },
+];
+---
+
+<section id="experience" class="bg-white" aria-labelledby="experience-heading">
+  <div class="mx-auto max-w-7xl px-6 py-14 sm:px-8 sm:py-16">
+    <header class="mb-8">
+      <div class="mb-4 flex items-center gap-3 font-mono text-[0.65rem] font-bold uppercase tracking-[0.24em] text-blue-600">
+        <span>03</span>
+        <span class="h-px w-10 bg-blue-600"></span>
+        Education & work
+      </div>
+      <h2 id="experience-heading" class="text-4xl font-black leading-[0.98] tracking-[-0.045em] text-slate-950 sm:text-5xl lg:text-6xl">
+        Experience.
+      </h2>
+    </header>
+
+    <div class="divide-y divide-slate-200 border-y border-slate-200">
+      {groups.map((group) => (
+        <section class="grid gap-4 py-6 md:grid-cols-[10rem_minmax(0,1fr)] md:gap-8" aria-labelledby={`experience-${group.id}`}>
+          <h3 id={`experience-${group.id}`} class="text-lg font-bold leading-6 text-slate-950">{group.title}</h3>
+          <ol class="space-y-6" role="list">
+            {group.entries.map((entry) => (
+              <li class="grid gap-2 sm:grid-cols-[minmax(0,1fr)_auto] sm:gap-x-6">
+                <p class="whitespace-nowrap font-mono text-xs leading-6 text-slate-500 sm:col-start-2 sm:row-start-1 sm:text-right">
+                  {entry.period}
+                </p>
+                <div class="min-w-0 sm:col-start-1 sm:row-start-1">
+                  <h4 class="text-base font-semibold text-slate-950 sm:text-lg">
+                    {entry.href ? (
+                      <a href={entry.href} target="_blank" rel="noopener noreferrer" class="underline decoration-slate-300 underline-offset-4 transition-colors hover:text-blue-600 motion-reduce:transition-none">
+                        {entry.organization}
+                      </a>
+                    ) : entry.organization}
+                  </h4>
+                  {entry.title && <p class="mt-1 text-sm leading-6 text-slate-600">{entry.title}</p>}
+                  {entry.details && <p class:list={["text-sm leading-6 text-slate-500", !entry.title && "mt-1"]}>{entry.details}</p>}
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
+      ))}
+    </div>
+  </div>
+</section>

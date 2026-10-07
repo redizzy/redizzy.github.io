@@ -14,7 +14,7 @@ export interface Project {
   features?: string[];
 }
 
-export const gaanet: Project = {
+const gaanet: Project = {
   id: "gaanet",
   name: "GAANet",
   title: "Global-guided Asymmetric Attention Network",
@@ -37,7 +37,7 @@ export const gaanet: Project = {
   },
 };
 
-export const wholo: Project = {
+const wholo: Project = {
   id: "wholo",
   name: "WHOLO",
   title: "WHOLO",

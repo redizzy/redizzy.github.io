@@ -2,7 +2,7 @@
 import SiteLayout from "../layouts/SiteLayout.astro";
 import Hero from "../components/home/Hero.astro";
 import Projects from "../components/home/Projects.astro";
-import Journey from "../components/home/Journey.astro";
+import Experience from "../components/home/Experience.astro";
 import Skills from "../components/home/Skills.astro";
 import LatestPosts from "../components/home/LatestPosts.astro";
 import Books from "../components/home/Books.astro";
@@ -14,7 +14,7 @@ import { projectGroups } from "../lib/projects";
 <SiteLayout>
   <Hero />
   {projectGroups.map((group, index) => <Projects group={group} index={(index + 1).toString().padStart(2, "0")} />)}
-  <Journey />
+  <Experience />
   <Skills />
   <LatestPosts />
   <Books />

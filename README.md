@@ -34,7 +34,7 @@ npm run dev
 - `src/layouts/SiteLayout.astro`: shared page layout with the top navigation and footer.
 - `src/layouts/PostLayout.astro`: blog article layout built on the shared layout.
 - `src/components/home/`: homepage sections and navigation.
-- `src/lib/`: shared project and book data, plus URL and date formatting helpers.
+- `src/lib/`: shared project, experience, and book data, plus URL and date formatting helpers.
 - `src/content/blog/`: blog posts and their metadata.
 
 ## 📦 Deployment
@@ -48,6 +48,7 @@ This website is used to present my background, projects, and technical interests
 ## Updating Content
 
 - Edit `src/lib/projects.ts` to update the separate Research and Software groups shared by the homepage, project archive, and CV. Keep publication status and App Store availability accurate.
+- Edit `src/lib/experience.ts` to update the education and work records shared by the homepage and CV.
 - Luko's `public/luko-icon.jpg` is the 512px artwork from [its App Store listing](https://apps.apple.com/nl/app/luko-fitness-food-buddy/id6788284565); `public/luko-favicon.png` comes from [the official website favicon](https://lukoapp.com/assets/luko-icon.png).
 - Edit `src/pages/projects.astro` to manage the Software and Agent demo slots.
 - Edit `src/config.ts` for the default page title and description.
